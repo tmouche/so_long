@@ -6,11 +6,11 @@
 /*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/31 12:33:19 by tmouche           #+#    #+#             */
-/*   Updated: 2024/02/20 13:05:45 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/02/20 16:47:22 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_structure.h"
+#include "../HDRS/structure.h"
 #include <stdlib.h>
 
 t_opps	*_lstnew(int x1, int x2)
@@ -21,7 +21,7 @@ t_opps	*_lstnew(int x1, int x2)
 	if (!new)
 		return (NULL);
 	new->x1 = x1;
-	new->x1 = x2;
+	new->x2 = x2;
 	new->dir = 0;
 	new->sens = 1;
 	new->state = 0;
@@ -54,11 +54,6 @@ int	_lstadd_back(t_opps **lst, t_opps *new)
 {
 	t_opps	*lst_temp;
 
-	if (!new)
-	{
-		_lstclear(lst);
-		return (-1);
-	}
 	if (*lst)
 	{
 		lst_temp = _lstlast(*lst);

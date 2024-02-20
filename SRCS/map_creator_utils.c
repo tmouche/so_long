@@ -6,18 +6,18 @@
 /*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 16:40:47 by tmouche           #+#    #+#             */
-/*   Updated: 2024/01/29 18:19:45 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/02/20 14:21:35 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ft_map.h"
-# include "../libft/libft.h"
+#include "../include/libft/libft.h"
+#include "../HDRS/structure.h"
 #include <unistd.h>
 
-void	ft_map_struct(t_map *info, int x1, int x2, int collect)
+void	_map_struct(t_map *info, int x1, int x2, int collect)
 {
-	static t_proj proj;
-	
+	static t_proj	proj;
+
 	info->map_width = x2;
 	info->map_height = x1;
 	info->collect = collect;
@@ -33,7 +33,7 @@ void	ft_map_struct(t_map *info, int x1, int x2, int collect)
 	info->proj->o_x2 = 0;
 }
 
-void	ft_freemap(char **map)
+void	_freemap(char **map)
 {
 	int	i;
 
@@ -43,7 +43,7 @@ void	ft_freemap(char **map)
 	free(map);
 }
 
-int	ft_strlen_cust(char *str, char sep)
+int	_strlen_cust(char *str, char sep)
 {
 	int	i;
 
@@ -57,13 +57,13 @@ int	ft_strlen_cust(char *str, char sep)
 	return (i);
 }
 
-char	*ft_strjoin_map(char *s1, char *s2)
+char	*_strjoin_map(char *s1, char *s2)
 {
 	char	*dest;
-	int	index;
-	int	index2;
+	int		index;
+	int		index2;
 
-	dest = ft_calloc(1, ft_strlen_cust(s1, 0) + ft_strlen_cust(s2, 0) + 1);
+	dest = ft_calloc(1, _strlen_cust(s1, 0) + _strlen_cust(s2, 0) + 1);
 	if (!dest)
 		return (free(s1), NULL);
 	index = 0;

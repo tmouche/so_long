@@ -6,16 +6,16 @@
 /*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 16:12:07 by tmouche           #+#    #+#             */
-/*   Updated: 2024/01/10 12:22:50 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/02/20 14:16:36 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ft_map.h"
-#include "../libft/libft.h"
-#include "../ft_base.h"
+#include "../include/libft/libft.h"
+#include "../HDRS/map.h"
+#include "../HDRS/base.h"
 #include <unistd.h>
 
-static int	ft_dim_map(char *buff)
+static int	_dim_map(char *buff)
 {
 	int	count;
 	int	index;
@@ -31,7 +31,7 @@ static int	ft_dim_map(char *buff)
 	return (count);
 }
 
-static void	ft_erase_buff(char	*buff)
+static void	_erase_buff(char	*buff)
 {
 	int	index;
 	int	offset;
@@ -54,27 +54,27 @@ static void	ft_erase_buff(char	*buff)
 		buff[offset++] = 0;
 }
 
-static char	**create_map(char **map, char *buff)
+static char	**_create_map(char **map, char *buff)
 {
 	int	count;
 
-	map = ft_calloc(sizeof(char *), ft_dim_map(buff) + 1);
+	map = ft_calloc(sizeof(char *), _dim_map(buff) + 1);
 	if (!map)
 		return (NULL);
 	count = 0;
 	while (buff[0])
 	{
-		map[count] = ft_calloc(sizeof(char), ft_strlen_cust(buff, '\n'));
+		map[count] = ft_calloc(sizeof(char), _strlen_cust(buff, '\n'));
 		if (!map[count])
-			return (ft_freemap(map), NULL);
-		ft_strlcpy(map[count], buff, ft_strlen_cust(buff, '\n'));
-		ft_erase_buff(buff);
+			return (_freemap(map), NULL);
+		ft_strlcpy(map[count], buff, _strlen_cust(buff, '\n'));
+		_erase_buff(buff);
 		count++;
 	}
 	return (map);
 }
 
-static char	*ft_set_buff(int fd, char *buff)
+static char	*_set_buff(int fd, char *buff)
 {
 	char	*temp;
 	int		size;
@@ -90,7 +90,7 @@ static char	*ft_set_buff(int fd, char *buff)
 	lap = 0;
 	while (!(size < BUFFER_SIZE) || lap <= 1)
 	{
-		buff = ft_strjoin_map(buff, temp);
+		buff = _strjoin_map(buff, temp);
 		if (!buff)
 			return (free(temp), NULL);
 		size = read(fd, temp, BUFFER_SIZE);
@@ -103,7 +103,7 @@ static char	*ft_set_buff(int fd, char *buff)
 	return (free(temp), buff);
 }
 
-char	**read_map(int fd)
+char	**_read_map(int fd)
 {
 	char	*buff;
 	char	**map;
@@ -114,17 +114,17 @@ char	**read_map(int fd)
 		return (NULL);
 	size = read(fd, buff, BUFFER_SIZE);
 	if (size < 0)
-		return (NULL);
+		return (free (buff), NULL);
 	buff[size] = 0;
 	if (size == BUFFER_SIZE)
 	{
-		buff = ft_set_buff(fd, buff);
+		buff = _set_buff(fd, buff);
 		if (!buff)
 			return (free(buff), NULL);
 	}
 	map = NULL;
-	map = create_map(map, buff);
+	map = _create_map(map, buff);
 	if (!map)
-		return (NULL);
-	return (free (buff), map);
+		return (free(buff), NULL);
+	return (free(buff), map);
 }

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_structure.h                                     :+:      :+:    :+:   */
+/*   structure.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/31 15:53:48 by tmouche           #+#    #+#             */
-/*   Updated: 2024/02/20 13:48:00 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/02/20 17:03:59 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,16 +21,16 @@ typedef struct	s_opps
 	int				dir;
 	int				sens;
 	int				state;
-	struct s_stack	*prev;
-	struct s_stack	*next;
+	struct s_opps	*prev;
+	struct s_opps	*next;
 }				t_opps;
 
-/*typedef struct	s_opps
+typedef	struct	s_block
 {
-	int	**pos;
-	int	number;
-	int state;
-}				t_opps;*/
+	char	nature;
+	int		state;
+	t_opps	*bad;
+}				t_block;
 
 typedef struct	s_data
 {
@@ -136,5 +136,13 @@ typedef struct	s_struct
 	t_data			*img;
 	t_perf			*perf;
 }				t_struct;
+
+int		_lstsize(t_opps *lst);
+t_opps	*_lstlast(t_opps *lst);
+void	_lstclear(t_opps **lst);
+t_opps	*_lstnew(int x1, int x2);
+int		_lstadd_back(t_opps **lst, t_opps *new);
+void	_lstadd_front(t_opps **lst, t_opps *new);
+
 
 #endif

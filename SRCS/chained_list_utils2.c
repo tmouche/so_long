@@ -6,11 +6,11 @@
 /*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/01 18:01:26 by tmouche           #+#    #+#             */
-/*   Updated: 2024/02/20 11:17:34 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/02/20 16:23:31 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_structure.h"
+#include "../HDRS/structure.h"
 #include <stdlib.h>
 
 void	_lstclear(t_opps **lst)
