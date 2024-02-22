@@ -6,50 +6,51 @@
 #    By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/18 10:53:51 by tmouche           #+#    #+#              #
-#    Updated: 2024/02/20 13:16:45 by tmouche          ###   ########.fr        #
+#    Updated: 2024/02/22 16:54:44 by tmouche          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS        := map_checker_utils.c map_checker.c map_creator_utils.c map_creator.c map_dup.c map_ennemies.c colors_texture.c ft_window.c window_utils.c colors_tab.c movement_chara.c movement_checker.c movement_utils.c movement_event.c movement_projectile.c colors_struct.c ft_position.c main.c
+SRCS		:=	
 
-HEAD		:= ft_map.h ft_error.h ft_window.h ft_movement.h ft_base.h ft_texture.h ft_structure.h
+HDRS		:=	structure.h map.h window.h texture.h
 
-SRCS_D        :=    ./SRCS/
+SRCS_D		:=	SRCS/
 
-OBJS_D        :=    objs/
+HDRS_D		:=	HDRS/
 
-OBJS        :=    $(SRCS:%.c=$(OBJS_D)%.o)
+OBJS_D		:=	objs/
 
-CFLAGS        :=    -Wall -Wextra -g #-Werror
+OBJS		:=	$(SRCS:%.c=$(OBJS_D)%.o)
 
-AR            :=    ar rcs
+CFLAGS		:=	-Wall -Wextra -Werror -g 
 
-NAME        :=    so_long
+AR			:=	ar rcs
 
-all            :    $(NAME)
+NAME		:=	so_long
 
-$(NAME)        :    $(OBJS_D) $(OBJS) libft Makefile mlx Makefile
-					$(CC) $(OBJS) -Ilibft -Llibft -lft -Lmlx_linux -lmlx_Linux -Imlx_linux -L/usr/lib -lXext -lX11 -lm -lz -o $(NAME)
+all			:	$(NAME)
 
-$(OBJS)        :    $(OBJS_D)%.o: $(SRCS_D)%.c $(HEAD)
+$(NAME)		:	$(OBJS_D) $(OBJS) libft Makefile mlx Makefile
+				$(CC) $(OBJS) -Ilibft -Llibft -lft -Lmlx_linux -lmlx_Linux -Imlx_linux -L/usr/lib -lXext -lX11 -lm -lz -o $(NAME)
+
+$(OBJS)		:	$(OBJS_D)%.o: $(SRCS_D)%.c $(HDRS)
 					$(CC) $(CFLAGS) -Ilibft -I/usr/include -Imlx_linux -c $< -o $@
 
-$(OBJS_D)    :
+$(OBJS_D)	:
 				@mkdir -p $(OBJS_D)
 
-libft			:
+libft		:
 				make -C libft
 
-mlx            :
+mlx			:
 				make -C mlx_linux
 
-clean        :
+clean		:
 				$(RM) -r $(OBJS) $(OBJS_D)
 
-fclean        :    clean
+fclean		: clean
 				$(RM) $(NAME)
 
-re            :    fclean all
+re			: fclean all
 
-
-.PHONY: all bonus clean fclean re
+.PHONY		: all clean fclean re
