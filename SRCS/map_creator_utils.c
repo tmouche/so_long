@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 16:40:47 by tmouche           #+#    #+#             */
-/*   Updated: 2024/02/20 14:21:35 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/02/22 11:55:17 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,16 +31,6 @@ void	_map_struct(t_map *info, int x1, int x2, int collect)
 	info->proj->i = 0;
 	info->proj->o_x1 = 0;
 	info->proj->o_x2 = 0;
-}
-
-void	_freemap(char **map)
-{
-	int	i;
-
-	i = 0;
-	while (map[i])
-		free(map[i++]);
-	free(map);
 }
 
 int	_strlen_cust(char *str, char sep)

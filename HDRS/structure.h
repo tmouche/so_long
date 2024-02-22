@@ -6,12 +6,17 @@
 /*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/31 15:53:48 by tmouche           #+#    #+#             */
-/*   Updated: 2024/02/20 17:03:59 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/02/22 12:21:10 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCTURE_H
 # define STRUCTURE_H
+# define SPRITE_SIZE 60
+# define BUFFER_SIZE 1000000
+# define SCREEN_X 1920
+# define SCREEN_Y 1010
+# define POWER 150
 # include <stddef.h>
 
 typedef struct	s_opps
@@ -28,7 +33,7 @@ typedef struct	s_opps
 typedef	struct	s_block
 {
 	char	nature;
-	int		state;
+	int		life_state;
 	t_opps	*bad;
 }				t_block;
 
@@ -98,7 +103,7 @@ typedef struct	s_map
 {
 	int			map_width;
 	int			map_height;
-	char		**map;
+	char		**c_map;
 	int			p_x1;
 	int			p_x2;
 	int			collect;
@@ -108,6 +113,7 @@ typedef struct	s_map
 	int			player_state;
 	int			mv_x;
 	int			mv_y;
+	t_block		***s_map;
 	t_opps		**bad;
 	t_colors	*colors;
 	t_proj		*proj;
@@ -144,5 +150,7 @@ t_opps	*_lstnew(int x1, int x2);
 int		_lstadd_back(t_opps **lst, t_opps *new);
 void	_lstadd_front(t_opps **lst, t_opps *new);
 
+void	_free_all(t_struct *glob, int stop);
+void	_freemap(char **map);
 
 #endif

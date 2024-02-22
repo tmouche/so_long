@@ -6,13 +6,12 @@
 /*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 16:12:07 by tmouche           #+#    #+#             */
-/*   Updated: 2024/02/20 14:16:36 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/02/22 12:20:26 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/libft/libft.h"
 #include "../HDRS/map.h"
-#include "../HDRS/base.h"
 #include <unistd.h>
 
 static int	_dim_map(char *buff)
