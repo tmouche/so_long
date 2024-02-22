@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 13:54:24 by tmouche           #+#    #+#             */
-/*   Updated: 2024/02/22 14:10:40 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/02/22 16:35:02 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,38 +38,10 @@ void	_window(t_struct *g)
 {
 	_set_vars_img(g, _pix_x(g->info->map_width), _pix_y(g->info->map_height));
 	g->info->colors = _load_textures(g);
-	ft_texture(glob, glob->info->map, 0);
-	mlx_put_image_to_window(vars.mlx, vars.win, img.img, 0, 0);
-	mlx_key_hook(vars.win, hook_release, glob);
+	_texture_to_img(g, g->info, g->info->s_map);
+	mlx_put_image_to_window(g->vars->mlx, g->vars->win, g->img->img, 0, 0);
+	/*mlx_key_hook(vars.win, hook_release, glob);
 	mlx_hook(vars.win, 2, 1L << 0, hook_press, glob);
 	mlx_loop_hook(vars.mlx, ft_update, glob);
-	mlx_loop(vars.mlx);
+	mlx_loop(vars.mlx);*/
 }
-
-
-/*void _window(t_struct *glob)
-{
-	t_vars 		vars;
-	t_data 		img;
-	t_colors	colors;
-	int x;
-	int y;
-
-	x = ft_pix_x(glob->info->map_width);
-	y = ft_pix_y(glob->info->map_height);
-	vars.mlx = mlx_init();
-	vars.win = mlx_new_window(vars.mlx, x, y, "So_long");
-	img.img = mlx_new_image(vars.mlx, x, y);
-	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
-								 &img.endian);
-	ft_struct_charger(&colors);
-	glob->info->colors = &colors;
-	glob->img = &img;
-	glob->vars = &vars;
-	ft_texture(glob, glob->info->map, 0);
-	mlx_put_image_to_window(vars.mlx, vars.win, img.img, 0, 0);
-	mlx_key_hook(vars.win, hook_release, glob);
-	mlx_hook(vars.win, 2, 1L << 0, hook_press, glob);
-	mlx_loop_hook(vars.mlx, ft_update, glob);
-	mlx_loop(vars.mlx);
-}*/

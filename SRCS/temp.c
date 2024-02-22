@@ -100,46 +100,6 @@ int ft_update(t_struct *glob)
 
 //texture
 
-static int ft_which_x1(char **map, int x1, int x2, char c)
-{
-	int	offset;
-	
-	offset = 1;
-	while (map[x1 - offset][x2] == c)
-		offset++;
-	return (offset - 1);
-}
-
-static int ft_which_x2(char **map, int x1, int x2, char c)
-{
-	int	offset;
-	
-	offset = 0;
-	while (map[x1][x2 - offset] == c)
-		offset++;
-	return (offset - 1);
-}
-
-static int	_sprite_part(char **map, int x1, int x2, char c)
-{
-	int	temp_x1;
-	int	temp_x2;
-	
-	temp_x1 = x1;
-	temp_x2 = x2;
-	if (c == 'D' || c == 'P')
-	{
-		x1 = ft_which_x1(map, temp_x1, temp_x2, c);
-		x2 = ft_which_x2(map, temp_x1, temp_x2, c);
-	}
-	if (c == 'x')
-	{
-		x1 = 1;
-		x2 = 1;
-	}
-	return ((x2 % 3 + SPRITE_SIZE * (x1 % 3)) * (SPRITE_SIZE / 3));
-}
-
 void	ft_update_anim(t_struct* glob)
 {
 	if (glob->info->proj->i == 0 && glob->info->player_state == 0

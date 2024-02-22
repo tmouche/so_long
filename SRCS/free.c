@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 11:54:22 by tmouche           #+#    #+#             */
-/*   Updated: 2024/02/22 14:07:34 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/02/22 16:37:34 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,24 +72,24 @@ static void	_free_texture_c(t_colors *colors)
 
 static void	_free_texture_b(t_colors *colors)
 {
-	if (colors->player_shoot2_left)
-		free (colors->player_shoot2_left); 
-	if (colors->player_shoot3_left)
-		free (colors->player_shoot3_left);
-	if (colors->player_shoot4_left)
-		free (colors->player_shoot4_left);
-	if (colors->player_shoot5_left)
-		free (colors->player_shoot5_left);
-	if (colors->player_shoot1_right)
-		free (colors->player_shoot1_right);
-	if (colors->player_shoot2_right)
-		free (colors->player_shoot2_right);
-	if (colors->player_shoot3_right)
-		free (colors->player_shoot3_right);
-	if (colors->player_shoot4_right)
-		free (colors->player_shoot4_right);
-	if (colors->player_shoot5_right)
-		free (colors->player_shoot5_right);
+	if (colors->player_shoot2_l)
+		free (colors->player_shoot2_l); 
+	if (colors->player_shoot3_l)
+		free (colors->player_shoot3_l);
+	if (colors->player_shoot4_l)
+		free (colors->player_shoot4_l);
+	if (colors->player_shoot5_l)
+		free (colors->player_shoot5_l);
+	if (colors->player_shoot1_r)
+		free (colors->player_shoot1_r);
+	if (colors->player_shoot2_r)
+		free (colors->player_shoot2_r);
+	if (colors->player_shoot3_r)
+		free (colors->player_shoot3_r);
+	if (colors->player_shoot4_r)
+		free (colors->player_shoot4_r);
+	if (colors->player_shoot5_r)
+		free (colors->player_shoot5_r);
 	if (colors->explosion_1)
 		free (colors->explosion_1);
 	if (colors->explosion_2)
@@ -99,12 +99,12 @@ static void	_free_texture_b(t_colors *colors)
 
 static void	_free_texture_a(t_colors *colors)
 {
-	if (colors->player_left)
-		free (colors->player_left);
-	if (colors->player_right)
-		free (colors->player_right);
-	if (colors->opps_low)
-		free (colors->opps_low);
+	if (colors->player_l)
+		free (colors->player_l);
+	if (colors->player_r)
+		free (colors->player_r);
+	if (colors->opps_bot)
+		free (colors->opps_bot);
 	if (colors->opps_mid)
 		free (colors->opps_mid);
 	if (colors->opps_top)
@@ -119,8 +119,8 @@ static void	_free_texture_a(t_colors *colors)
 		free (colors->wall);
 	if (colors->proj)
 		free (colors->proj);
-	if (colors->player_shoot1_left)
-		free (colors->player_shoot1_left);
+	if (colors->player_shoot1_l)
+		free (colors->player_shoot1_l);
 	_free_texture_b(colors);
 }
 

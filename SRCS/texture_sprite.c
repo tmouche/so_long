@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   texture_structure.c                                :+:      :+:    :+:   */
+/*   texture_sprite.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 17:32:04 by tmouche           #+#    #+#             */
-/*   Updated: 2024/02/22 15:51:49 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/02/22 16:30:55 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,52 +40,52 @@ static int	*_sprite_anim_opps(t_colors *colors, int state)
 	}
 }
 
-static int	*_sprite_anim_player_right(t_colors *colors, int state)
+static int	*_sprite_anim_player_r(t_colors *colors, int state)
 {
 	if (state != 0)
 	{
 		if (state <= 2 && state >= 0)
-			return (colors->player_shoot1_right);
+			return (colors->player_shoot1_r);
 		else if (state <= 4)
-			return (colors->player_shoot2_right);
+			return (colors->player_shoot2_r);
 		else if (state <= 6)
-			return (colors->player_shoot3_right);
+			return (colors->player_shoot3_r);
 		else if (state <= 8)
-			return (colors->player_shoot4_right);
+			return (colors->player_shoot4_r);
 		else if (state <= 10)
-			return (colors->player_shoot5_right);
+			return (colors->player_shoot5_r);
 	}
-	return (colors->player_right);
+	return (colors->player_r);
 }
 
-static int	*_sprite_anim_player_left(t_colors *colors, int state)
+static int	*_sprite_anim_player_l(t_colors *colors, int state)
 {
 	if (state != 0)
 	{
 		if (state <= 2)
-			return (colors->player_shoot1_left);
+			return (colors->player_shoot1_l);
 		else if (state <= 4)
-			return (colors->player_shoot2_left);
+			return (colors->player_shoot2_l);
 		else if (state <= 6)
-			return (colors->player_shoot3_left);
+			return (colors->player_shoot3_l);
 		else if (state <= 8)
-			return (colors->player_shoot4_left);
+			return (colors->player_shoot4_l);
 		else if (state <= 10)
-			return (colors->player_shoot5_left);
+			return (colors->player_shoot5_l);
 	}
-	return (colors->player_left);
+	return (colors->player_l);
 }
 
 static int	*_sprite_animation(t_map *info, t_block *block)
 {
-	if (block->nature = 'D')
+	if (block->nature == 'D')
 		return (_sprite_anim_opps(info->colors, block->bad->state));
 	else
 	{
 		if (info->vec == 1)
-			return (_sprite_anim_player_right(info->colors, info->player_state));
+			return (_sprite_anim_player_r(info->colors, info->player_state));
 		else
-			return (_sprite_anim_player_left(info->colors, info->player_state));
+			return (_sprite_anim_player_l(info->colors, info->player_state));
 	}
 }
 

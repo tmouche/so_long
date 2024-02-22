@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/31 15:53:48 by tmouche           #+#    #+#             */
-/*   Updated: 2024/02/22 15:40:44 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/02/22 16:30:39 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,8 +48,8 @@ typedef struct	s_data
 
 typedef	struct	s_colors
 {
-	int			*player_right;
-	int			*player_left;
+	int			*player_r;
+	int			*player_l;
 	int			*opps_bot;
 	int			*opps_top;
 	int			*opps_mid;
@@ -58,16 +58,16 @@ typedef	struct	s_colors
 	int 		*collect;
 	int			*door;
 	int			*proj;
-	int			*player_shoot1_left;
-	int			*player_shoot2_left;
-	int			*player_shoot3_left;
-	int			*player_shoot4_left;
-	int			*player_shoot5_left;
-	int			*player_shoot1_right;
-	int			*player_shoot2_right;
-	int			*player_shoot3_right;
-	int			*player_shoot4_right;
-	int			*player_shoot5_right;
+	int			*player_shoot1_l;
+	int			*player_shoot2_l;
+	int			*player_shoot3_l;
+	int			*player_shoot4_l;
+	int			*player_shoot5_l;
+	int			*player_shoot1_r;
+	int			*player_shoot2_r;
+	int			*player_shoot3_r;
+	int			*player_shoot4_r;
+	int			*player_shoot5_r;
 	int			*explosion_1;
 	int			*explosion_2;
 	int			*explosion_3;

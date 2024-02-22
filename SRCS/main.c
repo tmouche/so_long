@@ -6,11 +6,12 @@
 /*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 23:31:59 by tmouche           #+#    #+#             */
-/*   Updated: 2024/02/22 12:41:48 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/02/22 16:24:23 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../HDRS/structure.h"
+#include "../HDRS/window.h"
 #include "../HDRS/map.h"
 #include <fcntl.h>
 
