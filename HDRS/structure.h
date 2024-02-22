@@ -6,16 +6,16 @@
 /*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/31 15:53:48 by tmouche           #+#    #+#             */
-/*   Updated: 2024/02/22 12:21:10 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/02/22 15:40:44 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCTURE_H
 # define STRUCTURE_H
-# define SPRITE_SIZE 60
+# define SPR_S 60
 # define BUFFER_SIZE 1000000
-# define SCREEN_X 1920
-# define SCREEN_Y 1010
+# define SSIZE_X 1920
+# define SSIZE_Y 1010
 # define POWER 150
 # include <stddef.h>
 
@@ -50,7 +50,7 @@ typedef	struct	s_colors
 {
 	int			*player_right;
 	int			*player_left;
-	int			*opps_low;
+	int			*opps_bot;
 	int			*opps_top;
 	int			*opps_mid;
 	int 		*empty;
@@ -72,6 +72,8 @@ typedef	struct	s_colors
 	int			*explosion_2;
 	int			*explosion_3;
 	int			*explosion_4;
+	int			*explosion_5;
+	int			*explosion_6;
 }				t_colors;
 
 typedef struct	s_vars
@@ -82,10 +84,10 @@ typedef struct	s_vars
 
 typedef struct	s_offs
 {
-	int	up;
-	int	down;
-	int	left;
-	int	right;
+	int	u;
+	int	d;
+	int	l;
+	int	r;
 }				t_offs;
 
 typedef struct	s_proj
