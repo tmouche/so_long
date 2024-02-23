@@ -46,17 +46,17 @@ static int	*_sprite_anim_player_r(t_colors *colors, int state)
 	if (state != 0)
 	{
 		if (state <= 2 && state >= 0)
-			return (colors->player_shoot1_r);
+			return (colors->p_shoot1_r);
 		else if (state <= 4)
-			return (colors->player_shoot2_r);
+			return (colors->p_shoot2_r);
 		else if (state <= 6)
-			return (colors->player_shoot3_r);
+			return (colors->p_shoot3_r);
 		else if (state <= 8)
-			return (colors->player_shoot4_r);
+			return (colors->p_shoot4_r);
 		else if (state <= 10)
-			return (colors->player_shoot5_r);
+			return (colors->p_shoot5_r);
 	}
-	return (colors->player_r);
+	return (colors->p_r);
 }
 
 static int	*_sprite_anim_player_l(t_colors *colors, int state)
@@ -64,17 +64,17 @@ static int	*_sprite_anim_player_l(t_colors *colors, int state)
 	if (state != 0)
 	{
 		if (state <= 2)
-			return (colors->player_shoot1_l);
+			return (colors->p_shoot1_l);
 		else if (state <= 4)
-			return (colors->player_shoot2_l);
+			return (colors->p_shoot2_l);
 		else if (state <= 6)
-			return (colors->player_shoot3_l);
+			return (colors->p_shoot3_l);
 		else if (state <= 8)
-			return (colors->player_shoot4_l);
+			return (colors->p_shoot4_l);
 		else if (state <= 10)
-			return (colors->player_shoot5_l);
+			return (colors->p_shoot5_l);
 	}
-	return (colors->player_l);
+	return (colors->p_l);
 }
 
 static int	*_sprite_animation(t_map *info, t_block *block)

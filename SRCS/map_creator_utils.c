@@ -14,25 +14,6 @@
 #include "../HDRS/structure.h"
 #include <unistd.h>
 
-void	_map_struct(t_map *info, int x1, int x2, int collect)
-{
-	static t_proj	proj;
-
-	info->map_width = x2;
-	info->map_height = x1;
-	info->collect = collect;
-	info->step = 0;
-	info->vec = 1;
-	info->player_state = 0;
-	info->mv_x = 0;
-	info->mv_y = 0;
-	info->proj = &proj;
-	info->proj->limit = 0;
-	info->proj->i = 0;
-	info->proj->o_x1 = 0;
-	info->proj->o_x2 = 0;
-}
-
 int	_strlen_cust(char *str, char sep)
 {
 	int	i;

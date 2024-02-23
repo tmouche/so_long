@@ -48,8 +48,8 @@ typedef struct	s_data
 
 typedef	struct	s_colors
 {
-	int			*player_r;
-	int			*player_l;
+	int			*p_r;
+	int			*p_l;
 	int			*opps_bot;
 	int			*opps_top;
 	int			*opps_mid;
@@ -58,16 +58,16 @@ typedef	struct	s_colors
 	int 		*collect;
 	int			*door;
 	int			*proj;
-	int			*player_shoot1_l;
-	int			*player_shoot2_l;
-	int			*player_shoot3_l;
-	int			*player_shoot4_l;
-	int			*player_shoot5_l;
-	int			*player_shoot1_r;
-	int			*player_shoot2_r;
-	int			*player_shoot3_r;
-	int			*player_shoot4_r;
-	int			*player_shoot5_r;
+	int			*p_shoot2_l;
+	int			*p_shoot1_l;
+	int			*p_shoot3_l;
+	int			*p_shoot4_l;
+	int			*p_shoot5_l;
+	int			*p_shoot1_r;
+	int			*p_shoot2_r;
+	int			*p_shoot3_r;
+	int			*p_shoot4_r;
+	int			*p_shoot5_r;
 	int			*explosion_1;
 	int			*explosion_2;
 	int			*explosion_3;
@@ -154,5 +154,7 @@ void	_lstadd_front(t_opps **lst, t_opps *new);
 
 void	_free_all(t_struct *glob, int stop);
 void	_freemap(char **map);
+
+void	_init_t_colors(t_colors *colors);
 
 #endif

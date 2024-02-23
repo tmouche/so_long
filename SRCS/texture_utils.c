@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "../HDRS/structure.h"
+#include "../include/libft/libft.h"
 #include <unistd.h>
 #include <stdlib.h>
 #include <fcntl.h>
@@ -55,6 +56,7 @@ static int	*_txt_sprite(t_struct *g, char *str)
 	int		index;
 
 	fd = open(str, O_RDONLY);
+	free (str);
 	*i = read(fd, buff, BUFFER_SIZE);
 	close(fd);
 	if (*i < 0)
@@ -75,38 +77,44 @@ static int	*_txt_sprite(t_struct *g, char *str)
 
 static void	_load_anim_textures(t_struct *g, t_colors *colors)
 {
-	colors->player_shoot1_l = _txt_sprite(g, "graph/player_shoot1_l.txt");
-	colors->player_shoot2_l = _txt_sprite(g, "graph/player_shoot2_l.txt");
-	colors->player_shoot3_l = _txt_sprite(g, "graph/player_shoot3_l.txt");
-	colors->player_shoot4_l = _txt_sprite(g, "graph/player_shoot4_l.txt");
-	colors->player_shoot5_l = _txt_sprite(g, "graph/player_shoot5_l.txt");
-	colors->player_shoot1_r = _txt_sprite(g, "graph/player_shoot1_r.txt");
-	colors->player_shoot2_r = _txt_sprite(g, "graph/player_shoot2_r.txt");
-	colors->player_shoot3_r = _txt_sprite(g, "graph/player_shoot3_r.txt");
-	colors->player_shoot4_r = _txt_sprite(g, "graph/player_shoot4_r.txt");
-	colors->player_shoot5_r = _txt_sprite(g, "graph/player_shoot5_r.txt");
-	colors->explosion_1 = _txt_sprite(g, "graph/explosion_1.txt");
-	colors->explosion_2 = _txt_sprite(g, "graph/explosion_2.txt");
-	colors->explosion_3 = _txt_sprite(g, "graph/explosion_3.txt");
-	colors->explosion_4 = _txt_sprite(g, "graph/explosion_4.txt");
-	colors->explosion_5 = _txt_sprite(g, "graph/explosion_5.txt");
-	colors->explosion_6 = _txt_sprite(g, "graph/explosion_6.txt");
+	char	*path;
+
+	path = "texture/code texture/";
+	colors->p_shoot1_l = _txt_sprite(g, ft_strjoin(path,"p_shoot1_l.txt"));
+	colors->p_shoot2_l = _txt_sprite(g, ft_strjoin(path,"p_shoot2_l.txt"));
+	colors->p_shoot3_l = _txt_sprite(g, ft_strjoin(path,"p_shoot3_l.txt"));
+	colors->p_shoot4_l = _txt_sprite(g, ft_strjoin(path,"p_shoot4_l.txt"));
+	colors->p_shoot5_l = _txt_sprite(g, ft_strjoin(path,"p_shoot5_l.txt"));
+	colors->p_shoot1_r = _txt_sprite(g, ft_strjoin(path,"p_shoot1_r.txt"));
+	colors->p_shoot2_r = _txt_sprite(g, ft_strjoin(path,"p_shoot2_r.txt"));
+	colors->p_shoot3_r = _txt_sprite(g, ft_strjoin(path,"p_shoot3_r.txt"));
+	colors->p_shoot4_r = _txt_sprite(g, ft_strjoin(path,"p_shoot4_r.txt"));
+	colors->p_shoot5_r = _txt_sprite(g, ft_strjoin(path,"p_shoot5_r.txt"));
+	colors->explosion_1 = _txt_sprite(g, ft_strjoin(path, "explosion_1.txt"));
+	colors->explosion_2 = _txt_sprite(g, ft_strjoin(path, "explosion_2.txt"));
+	colors->explosion_3 = _txt_sprite(g, ft_strjoin(path, "explosion_3.txt"));
+	colors->explosion_4 = _txt_sprite(g, ft_strjoin(path, "explosion_4.txt"));
+	colors->explosion_5 = _txt_sprite(g, ft_strjoin(path, "explosion_5.txt"));
+	colors->explosion_6 = _txt_sprite(g, ft_strjoin(path, "explosion_6.txt"));
 }
 
 t_colors	*_load_textures(t_struct *g)
 {
 	static t_colors	colors;
+	char	*path;
 
-	colors.player_l = _txt_sprite(g, "graph/player_l.txt");
-	colors.player_r = _txt_sprite(g, "graph/player_r.txt");
-	colors.opps_bot = _txt_sprite(g, "graph/opps_bot.txt");
-	colors.opps_mid = _txt_sprite(g, "graph/opps_mid.txt");
-	colors.opps_top = _txt_sprite(g, "graph/opps_top.txt");
-	colors.collect = _txt_sprite(g, "graph/collec.txt");
-	colors.door = _txt_sprite(g, "graph/door.txt");
-	colors.empty = _txt_sprite(g, "graph/empty.txt");
-	colors.wall = _txt_sprite(g, "graph/wall.txt");
-	colors.proj = _txt_sprite(g, "graph/proj.txt");
+	_init_t_colors(colors);
+	path = "texture/code texture/";
+	colors.p_l = _txt_sprite(g, ft_strjoin(path, "p_l.txt"));
+	colors.p_r = _txt_sprite(g, ft_strjoin(path, "p_r.txt"));
+	colors.opps_bot = _txt_sprite(g, ft_strjoin(path, "opps_bot.txt"));
+	colors.opps_mid = _txt_sprite(g, ft_strjoin(path, "opps_mid.txt"));
+	colors.opps_top = _txt_sprite(g, ft_strjoin(path, "opps_top.txt"));
+	colors.collect = _txt_sprite(g, ft_strjoin(path, "collec.txt"));
+	colors.door = _txt_sprite(g, ft_strjoin(path, "door.txt"));
+	colors.empty = _txt_sprite(g,ft_strjoin(path, "empty.txt"));
+	colors.wall = _txt_sprite(g, ft_strjoin(path, "wall.txt"));
+	colors.proj = _txt_sprite(g, ft_strjoin(path, "proj.txt"));
 	_load_anim_textures(g, &colors);
 	return (&colors);
 }
