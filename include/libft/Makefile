@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+         #
+#    By: tmouche < tmouche@student.42lyon.fr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/09 13:32:16 by tmouche           #+#    #+#              #
-#    Updated: 2024/02/19 17:28:54 by tmouche          ###   ########.fr        #
+#    Updated: 2024/02/23 19:46:14 by tmouche          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ HEAD	:=	libft.h
 
 CFLAGS	:=	-Wall -Wextra -Werror
 
-LFLAGS	:=	-fsanitize=leak,address
+LFLAGS	:=	#-fsanitize=leak,address
 
 AR	:=	ar rcs
 

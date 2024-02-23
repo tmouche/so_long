@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_fixer.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: tmouche < tmouche@student.42lyon.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 10:34:19 by tmouche           #+#    #+#             */
-/*   Updated: 2024/02/22 12:45:02 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/02/23 18:31:17 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,11 @@ static t_opps	*_fixer_opps(t_opps **bad, int x1, int x2)
 	if (_random(1, 2) == 0)
 		temp->sens = -1;
 	if (x1 % 3 == 0)
-		temp->state == 0;
+		temp->state = 0;
 	else if (x1 % 2 == 0)
-		temp->state == 1;
+		temp->state = 1;
 	else
-		temp->state == 2;
+		temp->state = 2;
 	_lstadd_back(bad, temp);
 	return (temp);
 }

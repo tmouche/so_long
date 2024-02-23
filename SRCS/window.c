@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   window.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: tmouche < tmouche@student.42lyon.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 13:54:24 by tmouche           #+#    #+#             */
-/*   Updated: 2024/02/22 16:35:02 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/02/23 18:47:21 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../include/mlx_linux/mlx.h"
+#include "../include/minilibx-linux/mlx.h"
 #include "../HDRS/window.h"
 #include "../HDRS/texture.h"
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   texture_sprite.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: tmouche < tmouche@student.42lyon.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 17:32:04 by tmouche           #+#    #+#             */
-/*   Updated: 2024/02/22 16:30:55 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/02/23 18:48:57 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ static int	*_sprite_anim_opps(t_colors *colors, int state)
 		if (state == -6)
 			return (colors->explosion_6);
 	}
+	return (NULL);
 }
 
 static int	*_sprite_anim_player_r(t_colors *colors, int state)

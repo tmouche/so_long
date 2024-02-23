@@ -3,62 +3,67 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+         #
+#    By: tmouche < tmouche@student.42lyon.fr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/18 10:53:51 by tmouche           #+#    #+#              #
-#    Updated: 2024/02/22 16:54:44 by tmouche          ###   ########.fr        #
+#    Updated: 2024/02/23 19:31:03 by tmouche          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 HDRS := map.h structure.h texture.h window.h
 
-SRCS := srcs/chained_list_utils1.c  srcs/map_creator_utils.c    srcs/texture_loc.c \
-        srcs/chained_list_utils2.c  srcs/map_fixer.c            srcs/texture_print.c \
-        srcs/free.c                 srcs/texture_sprite.c \
-    	srcs/texture_utils.c \
-        srcs/main.c                 srcs/window.c \
-        srcs/map_all_utils.c        srcs/window_utils.c \
-        srcs/map_checker.c          
-        srcs/map_creator.c          
+SRCS := chained_list_utils1.c map_creator_utils.c texture_loc.c \
+        chained_list_utils2.c map_fixer.c texture_print.c \
+        free.c texture_sprite.c \
+        texture_utils.c \
+        main.c window.c \
+        map_all_utils.c window_utils.c \
+        map_checker.c map_creator.c
 
-SRCS_D := srcs/
-HDRS_D := headers/
-OBJS_D := objs/
+SRCS_D := SRCS/
+HDRS_D := HDRS/
+OBJS_D := OBJS/
+INC_D  := include/
 
 CFLAGS := -Wall -Wextra -Werror -g
-CC := gcc
+CC := cc
 AR := ar rcs
 RM := rm -rf
 
 NAME := so_long
+OBJS := $(SRCS:%.c=$(OBJS_D)%.o)
 
-.PHONY: all clean fclean re libft mlx ft_printf
+all: libft ft_printf minilibx-linux $(NAME)
 
-all: $(NAME)
+$(NAME): $(OBJS_D) $(OBJS) | libft ft_printf minilibx-linux
+	$(CC) $(CFLAGS) $(OBJS) -I$(INC_D)libft -L$(INC_D)libft -lft -I$(INC_D)minilibx-linux -L$(INC_D)minilibx-linux -lmlx -L$(INC_D)ft_printf -lftprintf -L/usr/lib -lXext -lX11 -lm -lz -o $(NAME)
 
-$(NAME): $(OBJS_D) $(SRCS) $(HDRS) | libft mlx ft_printf
-    $(CC) $(CFLAGS) $(SRCS) -I$(HDRS_D)libft -Llibft -lft -I$(HDRS_D)mlx_linux -Lmlx_linux -lmlx_Linux -L/usr/lib -lXext -lX11 -lm -lz -o $(NAME)
+
+$(OBJS_D)%.o: $(SRCS_D)%.c $(HDRS:%=$(HDRS_D)%)
+	$(CC) $(CFLAGS) -I$(INC_D)libft -I$(INC_D)ft_printf -I$(INC_D)minilibx-linux -c $< -o $@
 
 $(OBJS_D):
-    @mkdir -p $(OBJS_D)
+	@mkdir -p $(OBJS_D)
 
 libft:
-    make -C libft
-
-mlx:
-    make -C mlx_linux
+	$(MAKE) -C $(INC_D)libft
 
 ft_printf:
-    make -C ft_printf
+	$(MAKE) -C $(INC_D)ft_printf
 
-$(OBJS_D)%.o: $(SRCS_D)%.c $(HDRS)
-    $(CC) $(CFLAGS) -I$(HDRS_D)libft -I/usr/include -I$(HDRS_D)mlx_linux -c $< -o $@
+minilibx-linux:
+	$(MAKE) -C $(INC_D)minilibx-linux
 
 clean:
-    $(RM) -r $(OBJS_D)
+	$(RM) -r $(OBJS_D)
 
 fclean: clean
-    $(RM) $(NAME)
+	$(RM) $(NAME)
+	$(MAKE) -C $(INC_D)libft fclean
+	$(MAKE) -C $(INC_D)ft_printf fclean
+	$(MAKE) -C $(INC_D)minilibx-linux clean
 
 re: fclean all
+
+.PHONY: all clean fclean re libft ft_printf minilibx-linux
 
