@@ -1,4 +1,4 @@
 mlx_linux
 so_long
-*.c
+*.o
 ./include/*.git
