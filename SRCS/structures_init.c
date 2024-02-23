@@ -21,16 +21,16 @@ static void	_init_t_colors_bis(t_ colors *colors)
 
 void	_init_t_colors(t_colors *colors)
 {
-	colors.p_l = NULL;
-	colors.p_r = NULL;
-	colors.opps_bot = NULL;
-	colors.opps_mid = NULL;
-	colors.opps_top = NULL;
-	colors.collect = NULL;
-	colors.door = NULL;
-	colors.empty = NULL;
-	colors.wall = NULL;
-	colors.proj = NULL;
+	colors->p_l = NULL;
+	colors->p_r = NULL;
+	colors->opps_bot = NULL;
+	colors->opps_mid = NULL;
+	colors->opps_top = NULL;
+	colors->collect = NULL;
+	colors->door = NULL;
+	colors->empty = NULL;
+	colors->wall = NULL;
+	colors->proj = NULL;
 	colors->p_shoot1_l = NULL;
 	colors->p_shoot2_l = NULL;
 	colors->p_shoot3_l = NULL;
