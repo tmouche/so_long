@@ -18,7 +18,7 @@ SRCS := chained_list_utils1.c map_creator_utils.c texture_loc.c \
         texture_utils.c \
         main.c window.c \
         map_all_utils.c window_utils.c \
-        map_checker.c map_creator.c structures_init.c 
+        map_checker.c map_creator.c 
 
 SRCS_D := SRCS/
 HDRS_D := HDRS/

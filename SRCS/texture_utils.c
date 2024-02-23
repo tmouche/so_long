@@ -103,7 +103,6 @@ void	_load_textures(t_struct *g)
 	static t_colors	colors;
 	char	*path;
 
-	//_init_t_colors(&colors);
 	g->info->colors = &colors;
 	path = "texture/code texture/";
 	colors.p_l = _txt_sprite(g, ft_strjoin(path, "p_l.txt"));

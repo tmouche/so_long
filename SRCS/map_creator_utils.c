@@ -52,3 +52,22 @@ char	*_strjoin_map(char *s1, char *s2)
 		dest[index++] = s2[index2++];
 	return (dest);
 }
+
+void	_init_t_map(t_map *info, int x1, int x2, int collect)
+{
+	static t_proj	proj;
+
+	info->map_width = x2;
+	info->map_height = x1;
+	info->collect = collect;
+	info->step = 0;
+	info->vec = 1;
+	info->player_state = 0;
+	info->mv_x = 0;
+	info->mv_y = 0;
+	info->proj = &proj;
+	info->proj->limit = 0;
+	info->proj->i = 0;
+	info->proj->o_x1 = 0;
+	info->proj->o_x2 = 0;
+}
