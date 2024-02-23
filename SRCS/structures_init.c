@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   map_creator_utils.c                                :+:      :+:    :+:   */
+/*   structures_init.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: tmouche < tmouche@student.42lyon.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 16:40:47 by tmouche           #+#    #+#             */
-/*   Updated: 2024/02/22 11:55:17 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/02/23 21:48:00 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../HDRS/structure.h"
 
-static void	_init_t_colors_bis(t_ colors *colors)
+static void	_init_t_colors_bis(t_colors *colors)
 {
 	colors->explosion_4 = NULL;
 	colors->explosion_5 = NULL;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_checker.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: tmouche < tmouche@student.42lyon.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 18:18:55 by tmouche           #+#    #+#             */
-/*   Updated: 2024/02/20 14:43:23 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/02/23 21:50:00 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,7 +119,7 @@ int	_map_checker(t_map *info, char **map)
 		if (x2 != (int)ft_strlen(map[0], 0))
 			return (_write_err(3), -1);
 	}
-	_map_struct(info, x1, x2, _map_resolvable(info, 0, 0, map));
+	_init_t_map(info, x1, x2, _map_resolvable(info, 0, 0, map));
 	if (_map_resolvable(info, 0, 0, NULL) == -1)
 		return (_write_err(2), -1);
 	return (0);
