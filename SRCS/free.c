@@ -72,24 +72,24 @@ static void	_free_texture_c(t_colors *colors)
 
 static void	_free_texture_b(t_colors *colors)
 {
-	if (colors->player_shoot2_l)
-		free (colors->player_shoot2_l); 
-	if (colors->player_shoot3_l)
-		free (colors->player_shoot3_l);
-	if (colors->player_shoot4_l)
-		free (colors->player_shoot4_l);
-	if (colors->player_shoot5_l)
-		free (colors->player_shoot5_l);
-	if (colors->player_shoot1_r)
-		free (colors->player_shoot1_r);
-	if (colors->player_shoot2_r)
-		free (colors->player_shoot2_r);
-	if (colors->player_shoot3_r)
-		free (colors->player_shoot3_r);
-	if (colors->player_shoot4_r)
-		free (colors->player_shoot4_r);
-	if (colors->player_shoot5_r)
-		free (colors->player_shoot5_r);
+	if (colors->p_shoot2_l)
+		free (colors->p_shoot2_l); 
+	if (colors->p_shoot3_l)
+		free (colors->p_shoot3_l);
+	if (colors->p_shoot4_l)
+		free (colors->p_shoot4_l);
+	if (colors->p_shoot5_l)
+		free (colors->p_shoot5_l);
+	if (colors->p_shoot1_r)
+		free (colors->p_shoot1_r);
+	if (colors->p_shoot2_r)
+		free (colors->p_shoot2_r);
+	if (colors->p_shoot3_r)
+		free (colors->p_shoot3_r);
+	if (colors->p_shoot4_r)
+		free (colors->p_shoot4_r);
+	if (colors->p_shoot5_r)
+		free (colors->p_shoot5_r);
 	if (colors->explosion_1)
 		free (colors->explosion_1);
 	if (colors->explosion_2)
@@ -99,10 +99,10 @@ static void	_free_texture_b(t_colors *colors)
 
 static void	_free_texture_a(t_colors *colors)
 {
-	if (colors->player_l)
-		free (colors->player_l);
-	if (colors->player_r)
-		free (colors->player_r);
+	if (colors->p_l)
+		free (colors->p_l);
+	if (colors->p_r)
+		free (colors->p_r);
 	if (colors->opps_bot)
 		free (colors->opps_bot);
 	if (colors->opps_mid)
@@ -119,8 +119,8 @@ static void	_free_texture_a(t_colors *colors)
 		free (colors->wall);
 	if (colors->proj)
 		free (colors->proj);
-	if (colors->player_shoot1_l)
-		free (colors->player_shoot1_l);
+	if (colors->p_shoot1_l)
+		free (colors->p_shoot1_l);
 	_free_texture_b(colors);
 }
 
