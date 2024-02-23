@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structure.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: tmouche < tmouche@student.42lyon.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/31 15:53:48 by tmouche           #+#    #+#             */
-/*   Updated: 2024/02/22 16:30:39 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/02/23 21:49:45 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,5 +156,6 @@ void	_free_all(t_struct *glob, int stop);
 void	_freemap(char **map);
 
 void	_init_t_colors(t_colors *colors);
+void	_init_t_map(t_map *info, int x1, int x2, int collect);
 
 #endif
