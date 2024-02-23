@@ -22,6 +22,6 @@ void 		_where_start(t_offs off, int *offset_cam, t_map *info);
 t_offs		_edge_distance(t_block ***s_map, int x1, int x2);
 
 void		_mlx_pixel_put(t_data *data, int x, int y, int color);
-t_colors	*_load_textures(t_struct *g);
+void		_load_textures(t_struct *g);
 
 #endif	

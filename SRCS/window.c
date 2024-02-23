@@ -37,7 +37,7 @@ static void	_set_vars_img(t_struct *g, int x, int y)
 void	_window(t_struct *g)
 {
 	_set_vars_img(g, _pix_x(g->info->map_width), _pix_y(g->info->map_height));
-	g->info->colors = _load_textures(g);
+	_load_textures(g);
 	_texture_to_img(g, g->info, g->info->s_map);
 	mlx_put_image_to_window(g->vars->mlx, g->vars->win, g->img->img, 0, 0);
 	/*mlx_key_hook(vars.win, hook_release, glob);

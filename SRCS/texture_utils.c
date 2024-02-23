@@ -98,12 +98,13 @@ static void	_load_anim_textures(t_struct *g, t_colors *colors)
 	colors->explosion_6 = _txt_sprite(g, ft_strjoin(path, "explosion_6.txt"));
 }
 
-t_colors	*_load_textures(t_struct *g)
+void	_load_textures(t_struct *g)
 {
 	static t_colors	colors;
 	char	*path;
 
-	_init_t_colors(&colors);
+	//_init_t_colors(&colors);
+	g->info->colors = &colors;
 	path = "texture/code texture/";
 	colors.p_l = _txt_sprite(g, ft_strjoin(path, "p_l.txt"));
 	colors.p_r = _txt_sprite(g, ft_strjoin(path, "p_r.txt"));
@@ -116,5 +117,4 @@ t_colors	*_load_textures(t_struct *g)
 	colors.wall = _txt_sprite(g, ft_strjoin(path, "wall.txt"));
 	colors.proj = _txt_sprite(g, ft_strjoin(path, "proj.txt"));
 	_load_anim_textures(g, &colors);
-	return (&colors);
 }
