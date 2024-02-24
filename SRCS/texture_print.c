@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   texture_print.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: tmouche < tmouche@student.42lyon.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 12:44:24 by tmouche           #+#    #+#             */
-/*   Updated: 2024/02/22 16:28:15 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/02/24 16:11:05 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,11 +69,11 @@ static void	_put_back(t_struct *g, t_map *info, t_block ***s_map, int *o_cam)
 
 	pxl_cc[0] = 0;
 	x1 = info->p_x1 + o_cam[0] -1;
-	while (++x1 - info->p_x1 + o_cam[0] < (SSIZE_Y / (SPR_S / 3)))
+	while (++x1 - info->p_x1 + o_cam[0] < (SSIZE_Y / (SPR_S / 3)) && s_map[x1])
 	{
 		x2 = info->p_x2 + o_cam[1] - 1;
 		pxl_cc[1] = 0;
-		while (++x2 - (info->p_x2 + o_cam[1]) < (SSIZE_X / (SPR_S / 3)))
+		while (++x2 - (info->p_x2 + o_cam[1]) < (SSIZE_X / (SPR_S / 3)) && s_map[x1][x2])
 		{
 			if (s_map[x1][x2]->nature == 'D' || s_map[x1][x2]->nature == 'P'
 				|| s_map[x1][x2]->nature == 'x')
