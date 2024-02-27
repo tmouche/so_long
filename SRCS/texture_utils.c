@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   texture_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: tmouche < tmouche@student.42lyon.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 14:43:12 by tmouche           #+#    #+#             */
-/*   Updated: 2024/02/22 16:42:44 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/02/26 13:22:06 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,17 +32,17 @@ static int	_set_hexa_color(char *src, int *i)
 	result = 0;
 	sign = 1;
 	while (src[*i] == '\n' || src[*i] == ' ')
-		i[0]++;
-	if (src[*i] == '-')
+		++i[0];
+	if (src[i[0]] == '-')
 	{
 		sign = -1;
-		i[0]++;
+		++i[0];
 	}
-	while (src[*i] >= '0' && src[*i] <= '9')
+	while (src[*i] >= '0' && src[i[0]] <= '9')
 	{
 		result *= 10;
-		result = result + (src[*i] - 48);
-		i[0]++;
+		result += (src[i[0]] - 48);
+		++i[0];
 	}
 	return (result * sign);
 }
@@ -61,13 +61,13 @@ static int	*_txt_sprite(t_struct *g, char *str)
 	close(fd);
 	if (*i < 0)
 		_free_all(g, 5);
-	colors = malloc(sizeof(int) * (SPR_S * SPR_S));
+	colors = malloc(sizeof(int) * (SPR_S * SPR_S + 1));
 	if (!colors)
 		_free_all(g, 5);
 	buff[*i] = 0;
 	*i = 0;
 	index = 0;
-	while (index < (SPR_S * SPR_S))
+	while (buff[*i] )
 	{
 		colors[index] = _set_hexa_color(buff, i);
 		index++;

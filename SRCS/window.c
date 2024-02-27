@@ -6,13 +6,14 @@
 /*   By: tmouche < tmouche@student.42lyon.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 13:54:24 by tmouche           #+#    #+#             */
-/*   Updated: 2024/02/23 18:47:21 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/02/26 13:42:55 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minilibx-linux/mlx.h"
 #include "../HDRS/window.h"
 #include "../HDRS/texture.h"
+#include <stdio.h>
 
 static void	_set_vars_img(t_struct *g, int x, int y)
 {

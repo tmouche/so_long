@@ -6,7 +6,7 @@
 /*   By: tmouche < tmouche@student.42lyon.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/31 15:53:48 by tmouche           #+#    #+#             */
-/*   Updated: 2024/02/23 21:49:45 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/02/24 17:40:58 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 # define SPR_S 60
 # define BUFFER_SIZE 1000000
 # define SSIZE_X 1920
-# define SSIZE_Y 1010
+# define SSIZE_Y 1020
 # define POWER 150
 # include <stddef.h>
 

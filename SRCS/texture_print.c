@@ -6,7 +6,7 @@
 /*   By: tmouche < tmouche@student.42lyon.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 12:44:24 by tmouche           #+#    #+#             */
-/*   Updated: 2024/02/24 16:11:05 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/02/26 13:46:10 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,19 +22,18 @@ static void	_print_sprite(t_struct *g, t_block *block, int *pxl_cc, char c)
 
 	colors = _sprite_stock(g->info, block, c);
 	i = 0;
-	pxl_y = pxl_cc[0];
-	pxl_x = pxl_cc[1];
-	while (colors[i])
+	pxl_y = pxl_cc[0] * SPR_S;
+	pxl_x = pxl_cc[1] * SPR_S;
+	while (i < SPR_S * SPR_S)
 	{
 		if (colors[i] != -1)
 			_mlx_pixel_put(g->img, pxl_x, pxl_y, colors[i]);
 		++pxl_x;
-		if (i % SPR_S == 0)
+		if (++i % SPR_S == 0)
 		{
 			pxl_x = pxl_cc[1];
 			++pxl_y;
 		}
-		++i;
 	}
 }
 
@@ -43,7 +42,7 @@ static void	_put_front(t_struct *g, t_map *info, t_block ***s_map, int *o_cam)
 	int	x1;
 	int	x2;
 	int	pxl_cc[2];
-
+	
 	pxl_cc[0] = 0;
 	x1 = info->p_x1 + o_cam[0] -1;
 	while (++x1 - info->p_x1 + o_cam[0] < (SSIZE_Y / (SPR_S / 3)))
@@ -55,9 +54,9 @@ static void	_put_front(t_struct *g, t_map *info, t_block ***s_map, int *o_cam)
 			if (s_map[x1][x2]->nature == 'D' || s_map[x1][x2]->nature == 'P'
 				|| s_map[x1][x2]->nature == 'x')
 				_print_sprite(g, s_map[x1][x2], pxl_cc, s_map[x1][x2]->nature);
-			pxl_cc[1] += SPR_S;
+			++pxl_cc[1];
 		}
-		pxl_cc[0] += SPR_S;
+		++pxl_cc[0];
 	}
 }
 
@@ -80,9 +79,9 @@ static void	_put_back(t_struct *g, t_map *info, t_block ***s_map, int *o_cam)
 				_print_sprite(g, s_map[x1][x2], pxl_cc, '0');
 			else
 				_print_sprite(g, s_map[x1][x2], pxl_cc, s_map[x1][x2]->nature);
-			pxl_cc[1] += SPR_S;
+			++pxl_cc[1];
 		}
-		pxl_cc[0] += SPR_S;
+		++pxl_cc[0];
 	}
 }
 
