@@ -3,17 +3,39 @@
 /*                                                        :::      ::::::::   */
 /*   window.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmouche < tmouche@student.42lyon.fr>       +#+  +:+       +#+        */
+/*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 13:54:24 by tmouche           #+#    #+#             */
-/*   Updated: 2024/02/26 13:42:55 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/02/27 20:25:33 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minilibx-linux/mlx.h"
+#include "../HDRS/structure.h"
 #include "../HDRS/window.h"
 #include "../HDRS/texture.h"
+#include <stdlib.h>
+#include <sys/time.h>
 #include <stdio.h>
+
+/*static int	_test(int keycode, t_struct *g)
+{
+	g->info->collect = 0;
+	printf("%d\n", keycode);
+	return (0);
+}*/
+
+int	_update(t_struct *g)
+{
+	struct timeval	time;
+	
+	gettimeofday(&time, NULL);
+	if (time.tv_usec % 60000)
+	{
+		
+	}
+	return (0);
+}
 
 static void	_set_vars_img(t_struct *g, int x, int y)
 {
@@ -32,7 +54,7 @@ static void	_set_vars_img(t_struct *g, int x, int y)
 	if (!img.img)
 		_free_all(g, 3);
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length,
-								 &img.endian);
+			&img.endian);
 }
 
 void	_window(t_struct *g)
@@ -41,8 +63,8 @@ void	_window(t_struct *g)
 	_load_textures(g);
 	_texture_to_img(g, g->info, g->info->s_map);
 	mlx_put_image_to_window(g->vars->mlx, g->vars->win, g->img->img, 0, 0);
-	/*mlx_key_hook(vars.win, hook_release, glob);
-	mlx_hook(vars.win, 2, 1L << 0, hook_press, glob);
-	mlx_loop_hook(vars.mlx, ft_update, glob);
-	mlx_loop(vars.mlx);*/
+	mlx_hook(g->vars->win, 2, 1L << 1, _key_release, g);
+	mlx_hook(g->vars->win, 2, 1L << 0, _key_press, g);
+	//mlx_loop_hook(g->vars->mlx, ft_update, g);
+	mlx_loop(g->vars->mlx);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   texture_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmouche < tmouche@student.42lyon.fr>       +#+  +:+       +#+        */
+/*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 14:43:12 by tmouche           #+#    #+#             */
-/*   Updated: 2024/02/26 13:22:06 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/02/27 18:08:29 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,19 +55,19 @@ static int	*_txt_sprite(t_struct *g, char *str)
 	int		i[1];
 	int		index;
 
-	fd = open(str, O_RDONLY);
+	fd = open(str, O_RDONLY);	
 	free (str);
 	*i = read(fd, buff, BUFFER_SIZE);
 	close(fd);
 	if (*i < 0)
 		_free_all(g, 5);
-	colors = malloc(sizeof(int) * (SPR_S * SPR_S + 1));
+	buff[*i] = 0;
+	colors = malloc(sizeof(int) * (SPR_S * SPR_S));
 	if (!colors)
 		_free_all(g, 5);
-	buff[*i] = 0;
 	*i = 0;
 	index = 0;
-	while (buff[*i] )
+	while (index < (SPR_S * SPR_S))
 	{
 		colors[index] = _set_hexa_color(buff, i);
 		index++;
@@ -80,16 +80,16 @@ static void	_load_anim_textures(t_struct *g, t_colors *colors)
 	char	*path;
 
 	path = "texture/code texture/";
-	colors->p_shoot1_l = _txt_sprite(g, ft_strjoin(path,"p_shoot1_l.txt"));
-	colors->p_shoot2_l = _txt_sprite(g, ft_strjoin(path,"p_shoot2_l.txt"));
-	colors->p_shoot3_l = _txt_sprite(g, ft_strjoin(path,"p_shoot3_l.txt"));
-	colors->p_shoot4_l = _txt_sprite(g, ft_strjoin(path,"p_shoot4_l.txt"));
-	colors->p_shoot5_l = _txt_sprite(g, ft_strjoin(path,"p_shoot5_l.txt"));
-	colors->p_shoot1_r = _txt_sprite(g, ft_strjoin(path,"p_shoot1_r.txt"));
-	colors->p_shoot2_r = _txt_sprite(g, ft_strjoin(path,"p_shoot2_r.txt"));
-	colors->p_shoot3_r = _txt_sprite(g, ft_strjoin(path,"p_shoot3_r.txt"));
-	colors->p_shoot4_r = _txt_sprite(g, ft_strjoin(path,"p_shoot4_r.txt"));
-	colors->p_shoot5_r = _txt_sprite(g, ft_strjoin(path,"p_shoot5_r.txt"));
+	colors->p_shoot1_l = _txt_sprite(g, ft_strjoin(path, "p_shoot1_l.txt"));
+	colors->p_shoot2_l = _txt_sprite(g, ft_strjoin(path, "p_shoot2_l.txt"));
+	colors->p_shoot3_l = _txt_sprite(g, ft_strjoin(path, "p_shoot3_l.txt"));
+	colors->p_shoot4_l = _txt_sprite(g, ft_strjoin(path, "p_shoot4_l.txt"));
+	colors->p_shoot5_l = _txt_sprite(g, ft_strjoin(path, "p_shoot5_l.txt"));
+	colors->p_shoot1_r = _txt_sprite(g, ft_strjoin(path, "p_shoot1_r.txt"));
+	colors->p_shoot2_r = _txt_sprite(g, ft_strjoin(path, "p_shoot2_r.txt"));
+	colors->p_shoot3_r = _txt_sprite(g, ft_strjoin(path, "p_shoot3_r.txt"));
+	colors->p_shoot4_r = _txt_sprite(g, ft_strjoin(path, "p_shoot4_r.txt"));
+	colors->p_shoot5_r = _txt_sprite(g, ft_strjoin(path, "p_shoot5_r.txt"));
 	colors->explosion_1 = _txt_sprite(g, ft_strjoin(path, "explosion_1.txt"));
 	colors->explosion_2 = _txt_sprite(g, ft_strjoin(path, "explosion_2.txt"));
 	colors->explosion_3 = _txt_sprite(g, ft_strjoin(path, "explosion_3.txt"));
@@ -101,7 +101,7 @@ static void	_load_anim_textures(t_struct *g, t_colors *colors)
 void	_load_textures(t_struct *g)
 {
 	static t_colors	colors;
-	char	*path;
+	char			*path;
 
 	g->info->colors = &colors;
 	path = "texture/code texture/";
@@ -112,7 +112,7 @@ void	_load_textures(t_struct *g)
 	colors.opps_top = _txt_sprite(g, ft_strjoin(path, "opps_top.txt"));
 	colors.collect = _txt_sprite(g, ft_strjoin(path, "collec.txt"));
 	colors.door = _txt_sprite(g, ft_strjoin(path, "door.txt"));
-	colors.empty = _txt_sprite(g,ft_strjoin(path, "empty.txt"));
+	colors.empty = _txt_sprite(g, ft_strjoin(path, "empty.txt"));
 	colors.wall = _txt_sprite(g, ft_strjoin(path, "wall.txt"));
 	colors.proj = _txt_sprite(g, ft_strjoin(path, "proj.txt"));
 	_load_anim_textures(g, &colors);

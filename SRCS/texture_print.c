@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   texture_print.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmouche < tmouche@student.42lyon.fr>       +#+  +:+       +#+        */
+/*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 12:44:24 by tmouche           #+#    #+#             */
-/*   Updated: 2024/02/26 13:46:10 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/02/27 17:58:55 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static void	_print_sprite(t_struct *g, t_block *block, int *pxl_cc, char c)
 		++pxl_x;
 		if (++i % SPR_S == 0)
 		{
-			pxl_x = pxl_cc[1];
+			pxl_x = pxl_cc[1] * SPR_S;
 			++pxl_y;
 		}
 	}
@@ -42,21 +42,24 @@ static void	_put_front(t_struct *g, t_map *info, t_block ***s_map, int *o_cam)
 	int	x1;
 	int	x2;
 	int	pxl_cc[2];
-	
+
 	pxl_cc[0] = 0;
-	x1 = info->p_x1 + o_cam[0] -1;
-	while (++x1 - info->p_x1 + o_cam[0] < (SSIZE_Y / (SPR_S / 3)))
+	x1 = info->p_x1 + o_cam[0];
+	while (x1 - info->p_x1 + o_cam[0] < (SSIZE_Y / (SPR_S / 3)) && s_map[x1])
 	{
-		x2 = info->p_x2 + o_cam[1] - 1;
+		x2 = info->p_x2 + o_cam[1];
 		pxl_cc[1] = 0;
-		while (++x2 - (info->p_x2 + o_cam[1]) < (SSIZE_X / (SPR_S / 3)))
+		while (x2 - (info->p_x2 + o_cam[1]) < (SSIZE_X / (SPR_S / 3))
+			&& s_map[x1][x2])
 		{
 			if (s_map[x1][x2]->nature == 'D' || s_map[x1][x2]->nature == 'P'
 				|| s_map[x1][x2]->nature == 'x')
 				_print_sprite(g, s_map[x1][x2], pxl_cc, s_map[x1][x2]->nature);
 			++pxl_cc[1];
+			x2 += 3;
 		}
 		++pxl_cc[0];
+		x1 += 3;
 	}
 }
 
@@ -67,12 +70,13 @@ static void	_put_back(t_struct *g, t_map *info, t_block ***s_map, int *o_cam)
 	int	pxl_cc[2];
 
 	pxl_cc[0] = 0;
-	x1 = info->p_x1 + o_cam[0] -1;
-	while (++x1 - info->p_x1 + o_cam[0] < (SSIZE_Y / (SPR_S / 3)) && s_map[x1])
+	x1 = info->p_x1 + o_cam[0];
+	while (x1 - info->p_x1 + o_cam[0] < (SSIZE_Y / (SPR_S / 3)) && s_map[x1])
 	{
-		x2 = info->p_x2 + o_cam[1] - 1;
+		x2 = info->p_x2 + o_cam[1];
 		pxl_cc[1] = 0;
-		while (++x2 - (info->p_x2 + o_cam[1]) < (SSIZE_X / (SPR_S / 3)) && s_map[x1][x2])
+		while (x2 - (info->p_x2 + o_cam[1]) < (SSIZE_X / (SPR_S / 3))
+			&& s_map[x1][x2])
 		{
 			if (s_map[x1][x2]->nature == 'D' || s_map[x1][x2]->nature == 'P'
 				|| s_map[x1][x2]->nature == 'x')
@@ -80,8 +84,10 @@ static void	_put_back(t_struct *g, t_map *info, t_block ***s_map, int *o_cam)
 			else
 				_print_sprite(g, s_map[x1][x2], pxl_cc, s_map[x1][x2]->nature);
 			++pxl_cc[1];
+			x2 += 3;
 		}
 		++pxl_cc[0];
+		x1 += 3;
 	}
 }
 

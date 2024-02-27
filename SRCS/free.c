@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmouche < tmouche@student.42lyon.fr>       +#+  +:+       +#+        */
+/*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 11:54:22 by tmouche           #+#    #+#             */
-/*   Updated: 2024/02/23 18:46:53 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/02/27 18:11:35 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,12 +68,16 @@ static void	_free_texture_c(t_colors *colors)
 		free (colors->explosion_3);
 	if (colors->explosion_4)
 		free (colors->explosion_4);
+	if (colors->explosion_5)
+		free (colors->explosion_5);
+	if (colors->explosion_6)
+		free (colors->explosion_6);
 }
 
 static void	_free_texture_b(t_colors *colors)
 {
 	if (colors->p_shoot2_l)
-		free (colors->p_shoot2_l); 
+		free (colors->p_shoot2_l);
 	if (colors->p_shoot3_l)
 		free (colors->p_shoot3_l);
 	if (colors->p_shoot4_l)

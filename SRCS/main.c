@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 23:31:59 by tmouche           #+#    #+#             */
-/*   Updated: 2024/02/22 16:24:23 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/02/27 18:09:33 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,6 @@ int	main(int ac, char **av)
 		return (_freemap(glob.info->c_map), -1);
 	_fixer_map(&glob);
 	_window(&glob);
-	_free_all(&glob, 1);
+	_free_all(&glob, 5);
 	return (0);
 }

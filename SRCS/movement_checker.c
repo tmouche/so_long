@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 12:48:03 by tmouche           #+#    #+#             */
-/*   Updated: 2024/02/20 13:16:59 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/02/27 18:38:58 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,33 +102,6 @@ void	ft_ennemies(t_map *info, t_opps *bad)
 		bad = bad->next;
 	}
 }
-
-/*void	ft_ennemies(t_map *info, t_opps *bad)
-{
-	int	i;
-	int	res;
-
-	i = 0;
-	while (i < bad->number)
-	{
-		if (bad->pos[i][0] > 0)
-		{
-			if (bad->pos[i][2] == 0)
-				res = ft_opps_check(info, ft_chk_v(bad->pos[i][0], bad->pos[i][1], bad->pos[i][3]));
-			else
-				res = ft_opps_check(info, ft_chk_h(bad->pos[i][0], bad->pos[i][1], bad->pos[i][3]));
-			if (res != 1)
-				bad->pos[i][3] *= -1;
-			if (bad->pos[i][2] == 0)
-				res = ft_opps_check(info, ft_chk_v(bad->pos[i][0], bad->pos[i][1], bad->pos[i][3]));
-			else
-				res = ft_opps_check(info, ft_chk_h(bad->pos[i][0], bad->pos[i][1], bad->pos[i][3]));
-			if (res == 1)
-				ft_move_opps(info->bad->pos, info->map, i);
-		}
-		i++;
-	}
-}*/
 
 int	ft_player(t_map *info, int o_x1, int o_x2)
 {

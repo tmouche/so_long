@@ -6,12 +6,11 @@
 /*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 11:40:46 by tmouche           #+#    #+#             */
-/*   Updated: 2024/02/20 12:57:09 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/02/27 18:38:18 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ft_structure.h"
-#include "../ft_map.h"
+#include "../HDRS/structure.h"
 #include <X11/keysym.h>
 
 void	ft_set_proj(t_map *info, int keycode)
@@ -32,8 +31,8 @@ void	ft_set_proj(t_map *info, int keycode)
 	}
 	if (info->proj->o_x2 != 0 && info->vec != info->proj->o_x2)
 		info->vec *= -1;
-	if (info->map[info->proj->x1][info->proj->x2] == '0')
-		info->map[info->proj->x1][info->proj->x2] = 'x';
+	if (info->s_map[info->proj->x1][info->proj->x2] == '0')
+		info->s_map[info->proj->x1][info->proj->x2] = 'x';
 }
 
 void	ft_projectile(t_map *info, t_proj *proj, char **map)

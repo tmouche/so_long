@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: tmouche < tmouche@student.42lyon.fr>       +#+  +:+       +#+         #
+#    By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/18 10:53:51 by tmouche           #+#    #+#              #
-#    Updated: 2024/02/23 19:31:03 by tmouche          ###   ########.fr        #
+#    Updated: 2024/02/27 18:32:21 by tmouche          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ SRCS := chained_list_utils1.c map_creator_utils.c texture_loc.c \
         texture_utils.c \
         main.c window.c \
         map_all_utils.c window_utils.c \
-        map_checker.c map_creator.c 
+        map_checker.c map_creator.c hooker.c
 
 SRCS_D := SRCS/
 HDRS_D := HDRS/
@@ -66,4 +66,3 @@ fclean: clean
 re: fclean all
 
 .PHONY: all clean fclean re libft ft_printf minilibx-linux
-

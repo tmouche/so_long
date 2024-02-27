@@ -39,34 +39,6 @@ void ft_new_frame(t_struct *glob)
 	free(str);
 }
 
-int	hook_release(int keycode, t_struct *glob)
-{
-	if (keycode == 'w')
-		glob->info->mv_y = 0;
-	if (keycode == 'a')
-		glob->info->mv_x = 0;
-	if (keycode == 's')
-		glob->info->mv_y = 0;
-	if (keycode == 'd')
-		glob->info->mv_x = 0;
-	if (keycode >= 65361 && keycode <= 65364 && glob->info->proj->limit == 0)
-		ft_set_proj(glob->info, keycode);
-	return (0);
-}
-
-int hook_press(int keycode, t_struct *glob)
-{
-	if (keycode == 'w')
-		glob->info->mv_y = -1;
-	if (keycode == 'a')
-		glob->info->mv_x = -1;
-	if (keycode == 's')
-		glob->info->mv_y = 1;
-	if (keycode == 'd')
-		glob->info->mv_x = 1;
-	return (0);
-}
-
 int ft_update(t_struct *glob)
 {
 	static unsigned int	lap = 0;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_fixer.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmouche < tmouche@student.42lyon.fr>       +#+  +:+       +#+        */
+/*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 10:34:19 by tmouche           #+#    #+#             */
-/*   Updated: 2024/02/23 18:31:17 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/02/27 17:30:35 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,7 +110,7 @@ void	_fixer_map(t_struct *g)
 		s_map[i][g->info->map_width * 3] = NULL;
 		++i;
 	}
-	g->info->bad = &bad;	
+	g->info->bad = &bad;
 	g->info->s_map = s_map;
 	_fill_map(g, g->info->c_map);
 }
