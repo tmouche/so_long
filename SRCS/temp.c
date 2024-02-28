@@ -25,20 +25,6 @@ void	_kill_opps(t_opps *bad, int x1, int x2)
 
 //window
 
-void ft_new_frame(t_struct *glob)	
-{
-	char *str;
-
-	str = ft_give_step(glob->info->collect, glob->info->step);
-	if (!str)
-		return;
-	ft_texture(glob, glob->info->map, 0);
-	mlx_clear_window(glob->vars->mlx, glob->vars->win);
-	mlx_put_image_to_window(glob->vars->mlx, glob->vars->win, glob->img->img, 0, 0);
-	mlx_string_put(glob->vars->mlx, glob->vars->win, 10, 10, 16777215, str);
-	free(str);
-}
-
 int ft_update(t_struct *glob)
 {
 	static unsigned int	lap = 0;

@@ -6,17 +6,15 @@
 /*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 13:54:24 by tmouche           #+#    #+#             */
-/*   Updated: 2024/02/27 20:25:33 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/02/28 18:37:17 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minilibx-linux/mlx.h"
 #include "../HDRS/structure.h"
-#include "../HDRS/window.h"
+#include "../HDRS/movement.h"
 #include "../HDRS/texture.h"
-#include <stdlib.h>
-#include <sys/time.h>
-#include <stdio.h>
+#include "../HDRS/window.h"
 
 /*static int	_test(int keycode, t_struct *g)
 {
@@ -24,18 +22,6 @@
 	printf("%d\n", keycode);
 	return (0);
 }*/
-
-int	_update(t_struct *g)
-{
-	struct timeval	time;
-	
-	gettimeofday(&time, NULL);
-	if (time.tv_usec % 60000)
-	{
-		
-	}
-	return (0);
-}
 
 static void	_set_vars_img(t_struct *g, int x, int y)
 {
@@ -65,6 +51,6 @@ void	_window(t_struct *g)
 	mlx_put_image_to_window(g->vars->mlx, g->vars->win, g->img->img, 0, 0);
 	mlx_hook(g->vars->win, 2, 1L << 1, _key_release, g);
 	mlx_hook(g->vars->win, 2, 1L << 0, _key_press, g);
-	//mlx_loop_hook(g->vars->mlx, ft_update, g);
+	mlx_loop_hook(g->vars->mlx, _exchanger, g);
 	mlx_loop(g->vars->mlx);
 }

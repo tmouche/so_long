@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structure.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmouche < tmouche@student.42lyon.fr>       +#+  +:+       +#+        */
+/*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/31 15:53:48 by tmouche           #+#    #+#             */
-/*   Updated: 2024/02/24 17:40:58 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/02/28 18:20:05 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,11 @@
 # define BUFFER_SIZE 1000000
 # define SSIZE_X 1920
 # define SSIZE_Y 1020
-# define POWER 150
+# define FPS 60
+# define SPEED_CHARA 3
+# define SPEED_PROJ 10
+# define SPEED_ANIM 10
+# define U_SEC 999999
 # include <stddef.h>
 
 typedef struct	s_opps

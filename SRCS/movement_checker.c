@@ -5,119 +5,104 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/20 12:48:03 by tmouche           #+#    #+#             */
-/*   Updated: 2024/02/27 18:38:58 by tmouche          ###   ########.fr       */
+/*   Created: 2024/02/28 15:54:06 by tmouche           #+#    #+#             */
+/*   Updated: 2024/02/28 18:31:55 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../libft/libft.h"
-#include "../ft_structure.h"
-#include "../ft_movement.h"
-#include "../ft_window.h"
-#include <stdio.h>
+#include "../HDRS/structure.h"
+#include "../HDRS/movement.h"
 
-static int	ft_check_char(char c)
+static int	_opps_check(t_struct *g, t_map *info, int **cc)
 {
-	if (c == 'D')
-		return (-2);
-	if (c == '2' || c == '1')
-		return (-1);
-	if (c == 'E')
-		return (0);
-	if (c == '0')
-		return (1);
-	if (c == 'C')
-		return (2);
-	return (4);
-}
-
-static int	ft_check_diag(t_map *info, int (*check)[2])
-{
-	if (ft_check_char(info->map[check[0][0]][check[0][1]]) < 0)
-		return (0);
-	return (2);
-}
-
-static int	ft_player_check(t_map *info, int (*check)[2])
-{
-	int	i;
-	int	res;
-
-	i = 0;
-	while (i < 3)
-	{
-		res = ft_check_char(info->map[check[i][0]][check[i][1]]);
-		if (res < 0)
-			return (res);
-		if (res == 2)
-		{
-			res = ft_is_a_collect(info, check, -1);
-			break;
-		}
-		/*if (res == 0)
-			ft_is_a_door(info, check, i);*/
-		i++;
-		res = 2;
-	}
-	return (res);
-}
-
-static int	ft_opps_check(t_map *info, int (*check)[2])
-{
-	int	i;
+	char	c;
+	int		i;
 	
 	i = 0;
 	while (i < 3)
 	{
-		if (info->map[check[i][0]][check[i][1]] != '0')
+		c = info->s_map[cc[i][0]][cc[i][1]]->nature;
+		if (c != '0' && c != 'P')
 			return (0);
 		i++;
+	}
+	i = 0;
+	while (i < 3)
+	{
+		c = info->s_map[cc[i][0]][cc[i][1]]->nature;
+		if (c == 'P')
+			_kill_player(g); 
 	}
 	return (1);
 }
 
-void	ft_ennemies(t_map *info, t_opps *bad)
+static int	_player_check(t_struct *g, t_map *info, int **cc, int limit)
 {
-	int	res;
+	char	c;
+	int		i;
+
+	i = 0;
+	while (i < limit)
+	{
+		c = info->s_map[cc[i][0]][cc[i][1]]->nature;
+		if (c == '1' || c == '2' || (c == 'E' && info->collect != 0))
+			return (0);
+		++i;
+	}
+	i = 0;
+	while (i < limit)
+	{
+		c = info->s_map[cc[i][0]][cc[i][1]]->nature;
+		if (c == 'D')
+			_kill_player(g);
+		else if (c == 'C')
+			_collectible(info, cc[i][0], cc[i][1]);
+		else if (c == 'E')
+			_door(g);
+		++i;
+	}
+	return (1);
+}
+
+void	_ennemies(t_struct *g, t_map *info, t_opps *bad)
+{
+	int	check_l[3][2];
 
 	while (bad)
 	{
-		if (bad->state >= 0)
+		if (bad->state < 0)
 		{
 			if (bad->dir == 0)
-				res = ft_opps_check(info, ft_chk_v(bad->x1, bad->x2, bad->sens));
+				_check_v(bad->x1, bad->x2, bad->sens, (int **)check_l);
 			else
-				res = ft_opps_check(info, ft_chk_h(bad->x1, bad->x2, bad->sens));
-			if (res != 1)
-			{
+				_check_h(bad->x1, bad->x2, bad->sens, (int **)check_l);
+			if (_opps_check(g, info, (int **)check_l) == 0)
 				bad->sens *= -1;
-				if (bad->dir == 0)
-					res = ft_opps_check(info, ft_chk_v(bad->x1, bad->x2, bad->sens));
-				else
-					res = ft_opps_check(info, ft_chk_h(bad->x1, bad->x2, bad->sens));
-			}
-			if (res == 1)
-				ft_move_opps(bad, info->map);
+			else
+				_move_opps(info->s_map, bad);
 		}
 		bad = bad->next;
 	}
 }
 
-int	ft_player(t_map *info, int o_x1, int o_x2)
+void	_player(t_struct *g, t_map *info, int o_x2)
 {
-	int checker;
+	int	check_l[3][2];
+	int	check_d[1][2];
 	
-	checker = 0;
 	if (o_x2 != 0 && info->vec != o_x2)
 		info->vec *= -1;
-	if (ft_player_check(info, ft_chk_v(info->p_x1, info->p_x2, info->mv_y)) == 2)
-		checker++;
-	if (ft_player_check(info, ft_chk_h(info->p_x1, info->p_x2, info->mv_x)) == 2)
-		checker++;
+	_check_v(info->p_x1, info->p_x2, info->mv_y, (int **)check_l);
+	if (_player_check(g, info, (int **)check_l, 3) == 0)
+		return ;
+	_check_h(info->p_x1, info->p_x2, info->mv_x, (int **)check_l);
+	if (_player_check(g, info, (int **)check_l, 3) == 0)
+		return ;
 	if (info->mv_y != 0 && info->mv_x != 0)
-		if (ft_check_diag(info, ft_chk_d(info->p_x1, info->p_x2, info->mv_y, info->mv_x)) != 2)
-			checker--;
-	if (checker == 2)
-		ft_move_player(info, info->mv_y, info->mv_x);
-	return (0);	
+	{
+		_check_d(info->p_x1, info->p_x2, info->mv_y, info->mv_x, (int **)check_d);
+		if (_player_check(g, info, (int **)check_d, 1) == 0)
+			return ;
+	}
+	_move_player(info, info->mv_y, info->mv_x);
 }
