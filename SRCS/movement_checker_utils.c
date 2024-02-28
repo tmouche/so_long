@@ -6,11 +6,11 @@
 /*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 15:48:16 by tmouche           #+#    #+#             */
-/*   Updated: 2024/02/28 17:17:32 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/02/28 18:51:52 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-void	_check_v(int x1, int x2, int o_x1, int **check)
+void	_check_v(int x1, int x2, int o_x1, int (*check)[2])
 {
 	if (o_x1 == -1)
 	{	
@@ -32,7 +32,7 @@ void	_check_v(int x1, int x2, int o_x1, int **check)
 	}
 }
 
-void	_check_h(int x1, int x2, int o_x2, int **check)
+void	_check_h(int x1, int x2, int o_x2, int (*check)[2])
 {
 	if (o_x2 == -1)
 	{
@@ -54,7 +54,7 @@ void	_check_h(int x1, int x2, int o_x2, int **check)
 	}
 }
 
-void	_check_d(int x1, int x2, int m_x1, int m_x2, int **check)
+void	_check_d(int x1, int x2, int m_x1, int m_x2, int (*check)[2])
 {
 	if (m_x1 == 1)
 		check[0][0] = x1 + 3;

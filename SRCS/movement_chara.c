@@ -6,18 +6,19 @@
 /*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 17:51:23 by tmouche           #+#    #+#             */
-/*   Updated: 2024/02/28 18:00:31 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/02/28 19:14:06 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../HDRS/structure.h"
 #include "../HDRS/movement.h"
+#include <unistd.h>
 
 void	_move_opps(t_block ***s_map, t_opps *bad)
 {
 	while (bad)
 	{
-		if (bad->state < 0)
+		if (bad->state >= 0)
 		{
 			_reset_chara(s_map, bad->x1, bad->x2);
 			if (bad->dir == 0)

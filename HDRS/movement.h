@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 12:54:49 by tmouche           #+#    #+#             */
-/*   Updated: 2024/02/28 18:25:16 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/02/28 18:52:44 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 # define MOVEMENT_H
 # include "structure.h"
 
-void	_check_v(int x1, int x2, int o_x1, int **check);
-void	_check_h(int x1, int x2, int o_x2, int **check);
-void	_check_d(int x1, int x2, int m_x1, int m_x2, int **check);
+void	_check_v(int x1, int x2, int o_x1, int (*check)[2]);
+void	_check_h(int x1, int x2, int o_x2, int (*check)[2]);
+void	_check_d(int x1, int x2, int m_x1, int m_x2, int (*check)[2]);
 
 void	_door(t_struct *g);
 void	_kill_player(t_struct *g);
@@ -32,4 +32,3 @@ void	_ennemies(t_struct *g, t_map *info, t_opps *bad);
 void	_player(t_struct *g, t_map *info, int o_x2);
 
 #endif
-	

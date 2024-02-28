@@ -6,14 +6,15 @@
 /*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 15:54:06 by tmouche           #+#    #+#             */
-/*   Updated: 2024/02/28 18:31:55 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/02/28 19:11:26 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../HDRS/structure.h"
 #include "../HDRS/movement.h"
+#include <unistd.h>
 
-static int	_opps_check(t_struct *g, t_map *info, int **cc)
+static int	_opps_check(t_struct *g, t_map *info, int (*cc)[2])
 {
 	char	c;
 	int		i;
@@ -24,19 +25,20 @@ static int	_opps_check(t_struct *g, t_map *info, int **cc)
 		c = info->s_map[cc[i][0]][cc[i][1]]->nature;
 		if (c != '0' && c != 'P')
 			return (0);
-		i++;
+		++i;
 	}
 	i = 0;
 	while (i < 3)
 	{
 		c = info->s_map[cc[i][0]][cc[i][1]]->nature;
 		if (c == 'P')
-			_kill_player(g); 
+			_kill_player(g);
+		++i;
 	}
 	return (1);
 }
 
-static int	_player_check(t_struct *g, t_map *info, int **cc, int limit)
+static int	_player_check(t_struct *g, t_map *info, int (*cc)[2], int limit)
 {
 	char	c;
 	int		i;
@@ -70,13 +72,13 @@ void	_ennemies(t_struct *g, t_map *info, t_opps *bad)
 
 	while (bad)
 	{
-		if (bad->state < 0)
+		if (bad->state >= 0)
 		{
 			if (bad->dir == 0)
-				_check_v(bad->x1, bad->x2, bad->sens, (int **)check_l);
+				_check_v(bad->x1, bad->x2, bad->sens, check_l);
 			else
-				_check_h(bad->x1, bad->x2, bad->sens, (int **)check_l);
-			if (_opps_check(g, info, (int **)check_l) == 0)
+				_check_h(bad->x1, bad->x2, bad->sens, check_l);
+			if (_opps_check(g, info, check_l) == 0)
 				bad->sens *= -1;
 			else
 				_move_opps(info->s_map, bad);
@@ -92,16 +94,16 @@ void	_player(t_struct *g, t_map *info, int o_x2)
 	
 	if (o_x2 != 0 && info->vec != o_x2)
 		info->vec *= -1;
-	_check_v(info->p_x1, info->p_x2, info->mv_y, (int **)check_l);
-	if (_player_check(g, info, (int **)check_l, 3) == 0)
+	_check_v(info->p_x1, info->p_x2, info->mv_y, check_l);
+	if (_player_check(g, info, check_l, 3) == 0)
 		return ;
-	_check_h(info->p_x1, info->p_x2, info->mv_x, (int **)check_l);
-	if (_player_check(g, info, (int **)check_l, 3) == 0)
+	_check_h(info->p_x1, info->p_x2, info->mv_x, check_l);
+	if (_player_check(g, info, check_l, 3) == 0)
 		return ;
 	if (info->mv_y != 0 && info->mv_x != 0)
 	{
-		_check_d(info->p_x1, info->p_x2, info->mv_y, info->mv_x, (int **)check_d);
-		if (_player_check(g, info, (int **)check_d, 1) == 0)
+		_check_d(info->p_x1, info->p_x2, info->mv_y, info->mv_x, check_d);
+		if (_player_check(g, info, (int (*)[2])check_d, 1) == 0)
 			return ;
 	}
 	_move_player(info, info->mv_y, info->mv_x);
