@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 10:34:19 by tmouche           #+#    #+#             */
-/*   Updated: 2024/02/27 17:30:35 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/02/29 17:55:17 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 
 static t_opps	*_fixer_opps(t_opps **bad, int x1, int x2)
 {
-	t_opps	*temp;
+	static int	seed = 1;
+	t_opps		*temp;
 
 	temp = _lstnew(x1, x2);
 	if (!temp)
@@ -24,17 +25,59 @@ static t_opps	*_fixer_opps(t_opps **bad, int x1, int x2)
 		temp->dir = 1;
 	if (_random(1, 2) == 0)
 		temp->sens = -1;
-	if (x1 % 3 == 0)
+	if (x1 % seed == 0)
 		temp->state = 0;
-	else if (x1 % 2 == 0)
+	else if (x1 % (seed + 1) == 0)
 		temp->state = 1;
 	else
 		temp->state = 2;
 	_lstadd_back(bad, temp);
+	++seed;
 	return (temp);
 }
 
+static void	_create_square(t_block ***s_map, t_block *block, int x1, int x2)
+{
+	int	temp_x1;
+	int	temp_x2;
+
+	temp_x1 = 0;
+	while (temp_x1 < 3)
+	{
+		temp_x2 = 0;
+		while (++temp_x2 < 3)
+		{
+			s_map[x1 + temp_x1][x2 + temp_x2] = block;
+			++temp_x2;
+		}
+		++temp_x1;
+	}
+}
+
 static void	_putchar_map(char c, t_struct *g, int x1, int x2)
+{
+	t_block	*block;
+
+	if (c == '0')
+		_create_square(g->info->s_map, NULL, x1, x2);
+	else
+	{
+		block = malloc(sizeof(t_block));
+		if (!block)
+			_free_all(g, 1);
+		block->nature = c;
+		block->bad = NULL;
+		if (c == 'D')
+		{
+			block->bad = _fixer_opps(g->info->bad, x1, x2);
+			if (!block->bad)
+				_free_all(g, 0);
+		}
+		_create_square(g->info->s_map, block, x1, x2);
+	}
+}
+
+/*static void	_putchar_map(char c, t_struct *g, int x1, int x2)
 {
 	t_block	*block;
 	int		temp_x1;
@@ -44,7 +87,6 @@ static void	_putchar_map(char c, t_struct *g, int x1, int x2)
 	if (!block)
 		_free_all(g, 1);
 	block->nature = c;
-	block->life_state = 1;
 	block->bad = NULL;
 	if (c == 'D')
 	{
@@ -59,7 +101,7 @@ static void	_putchar_map(char c, t_struct *g, int x1, int x2)
 		while (++temp_x2 < 3)
 			g->info->s_map[x1 + temp_x1][x2 + temp_x2] = block;
 	}
-}
+}*/
 
 static void	_fill_map(t_struct *g, char **c_map)
 {

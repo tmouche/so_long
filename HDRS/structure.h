@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/31 15:53:48 by tmouche           #+#    #+#             */
-/*   Updated: 2024/02/28 18:20:05 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/02/29 17:16:47 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ typedef struct	s_opps
 typedef	struct	s_block
 {
 	char	nature;
-	int		life_state;
 	t_opps	*bad;
 }				t_block;
 
@@ -113,7 +112,6 @@ typedef struct	s_map
 	int			p_x1;
 	int			p_x2;
 	int			collect;
-	char		event;
 	int			step;
 	int			vec;
 	int			player_state;
