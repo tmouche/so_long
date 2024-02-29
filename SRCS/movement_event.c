@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 13:47:22 by tmouche           #+#    #+#             */
-/*   Updated: 2024/02/28 18:27:27 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/02/29 18:38:57 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	_collectible(t_map *info, int x1, int x2)
 	while (x2 % 3 != 0)
 		x2--;
 	info->collect--;
-	_reset_chara(info->s_map, x1, x2);
+	_reset_chara(info, info->s_map, x1, x2);
 }
 
 void	_door(t_struct *g)

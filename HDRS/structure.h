@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/31 15:53:48 by tmouche           #+#    #+#             */
-/*   Updated: 2024/02/29 17:16:47 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/02/29 18:27:17 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,6 +118,7 @@ typedef struct	s_map
 	int			mv_x;
 	int			mv_y;
 	t_block		***s_map;
+	t_block		*empty;
 	t_opps		**bad;
 	t_colors	*colors;
 	t_proj		*proj;

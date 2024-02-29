@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 15:54:06 by tmouche           #+#    #+#             */
-/*   Updated: 2024/02/28 19:11:26 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/02/29 18:38:32 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ void	_ennemies(t_struct *g, t_map *info, t_opps *bad)
 			if (_opps_check(g, info, check_l) == 0)
 				bad->sens *= -1;
 			else
-				_move_opps(info->s_map, bad);
+				_move_opps(info, info->s_map, bad);
 		}
 		bad = bad->next;
 	}

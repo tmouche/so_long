@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 12:54:49 by tmouche           #+#    #+#             */
-/*   Updated: 2024/02/29 14:27:45 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/02/29 18:37:18 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@ void	_door(t_struct *g);
 void	_kill_player(t_struct *g);
 void	_collectible(t_map *info, int x1, int x2);
 
-void	_move_opps(t_block ***s_map, t_opps *bad);
+void	_move_opps(t_map *info, t_block ***s_map, t_opps *bad);
 void	_move_player(t_map *info, int d_x1, int d_x2);
 
-void	_reset_chara(t_block ***s_map, int x1, int x2);
+void	_reset_chara(t_map *info, t_block ***s_map, int x1, int x2);
 void	_replace_chara(t_block ***s_map, t_opps *bad, int x1, int x2, char c);
 
 void	_ennemies(t_struct *g, t_map *info, t_opps *bad);
