@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 16:40:47 by tmouche           #+#    #+#             */
-/*   Updated: 2024/02/27 17:30:24 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/03/01 17:16:50 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	_init_t_map(t_map *info, int x1, int x2, int collect)
 	info->mv_x = 0;
 	info->mv_y = 0;
 	info->proj = &proj;
-	info->proj->limit = 0;
+	info->proj->limit = -1;
 	info->proj->i = 0;
 	info->proj->o_x1 = 0;
 	info->proj->o_x2 = 0;

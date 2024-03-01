@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 18:13:03 by tmouche           #+#    #+#             */
-/*   Updated: 2024/03/01 14:54:12 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/03/01 17:15:51 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 #include "../HDRS/movement.h"
 #include "../HDRS/window.h"
 #include "../HDRS/texture.h"
+#include <stdio.h>
 
 int	_key_release(int keycode, t_struct *g)
 {
@@ -26,7 +27,7 @@ int	_key_release(int keycode, t_struct *g)
 		g->info->mv_y = 0;
 	if (keycode == 'd')
 		g->info->mv_x = 0;
-	if (keycode >= 65361 && keycode <= 65364 && g->info->proj->limit == 0)
+	if ((keycode == 65361 || keycode == 65363) && g->info->proj->limit == -1)
 		_define_projectile(g->info, g->info->proj, keycode);
 	return (0);
 }

@@ -1,12 +1,4 @@
-1. glich du player dans le proj si celui ci avance dedans
-->>  refaire le checker
-
-1. free et quit proprement
-2. emplementation croix et echap
-3. gestion erreur
-
-1. kill player lorsque contact avec opps
-2. gestion de exit
-3. sprite de shoot -> on bloaue le deplacement pour shoot
-4. sprite opps death
-5. opps glitch wall
+up : 65362
+down : 65364
+left : 65361
+right : 65363

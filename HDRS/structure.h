@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/31 15:53:48 by tmouche           #+#    #+#             */
-/*   Updated: 2024/03/01 14:47:55 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/03/01 16:39:34 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,10 @@
 # define SSIZE_X 1920
 # define SSIZE_Y 1020
 # define FPS 60
-# define SPEED_CHARA 5
-# define SPEED_PROJ 10
+# define SPEED_CHARA 10
+# define SPEED_LASER 15
 # define SPEED_ANIM 10
+# define RANGE_LASER 6
 # define U_SEC 999999
 # include <stddef.h>
 
