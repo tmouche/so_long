@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 15:23:10 by tmouche           #+#    #+#             */
-/*   Updated: 2024/03/01 17:25:11 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/03/01 19:01:33 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,8 @@ static inline void	_character(t_struct *g, int *multi)
 static inline void	_projectile(t_struct *g, int *multi)
 {
 	if (g->info->proj->limit >= 0)
-		_throw_proj(g->info, g->info->proj, g->info->s_map);
-	else if (g->info->proj->shoot == 0)
+		_throw_proj(g->info->proj, g->info->s_map);
+	else
 		_erase_proj(g->info, g->info->proj, g->info->s_map);
 	++multi[0];
 	if (multi[0] == SPEED_LASER)

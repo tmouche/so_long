@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 23:02:56 by tmouche           #+#    #+#             */
-/*   Updated: 2024/01/31 10:47:48 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/03/01 18:24:10 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,8 +113,8 @@ void extract_decimal_values(const char* image_path, const char* output_path) {
 }
 
 int main() {
-    const char* image_path = "../texture/explosion_4.png";
-    const char* output_path = "../graph/explosion_4.txt";
+    const char* image_path = "../../texture/visual texture/laser_1.png";
+    const char* output_path = "../../texture/code texture/laser_1.txt";
     extract_decimal_values(image_path, output_path);
 
     return 0;

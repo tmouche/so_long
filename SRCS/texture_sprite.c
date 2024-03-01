@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 17:32:04 by tmouche           #+#    #+#             */
-/*   Updated: 2024/03/01 14:09:48 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/03/01 18:25:06 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ int	*_sprite_stock(t_map *info, t_block *block, char c)
 	if (c == 'C')
 		return (info->colors->collect);
 	if (c == 'x')
-		return (info->colors->proj);
+		return (info->colors->laser_1);
 	else
 		return (NULL);
 }

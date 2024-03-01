@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 12:54:49 by tmouche           #+#    #+#             */
-/*   Updated: 2024/03/01 17:13:20 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/03/01 18:59:45 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	_replace_chara(t_block ***s_map, t_block *block, int x1, int x2);
 void	_ennemies(t_struct *g, t_map *info, t_opps *bad);
 void	_player(t_struct *g, t_map *info, int o_x2);
 
-void	_throw_proj(t_map *info, t_proj *proj, t_block ***s_map);
+void	_throw_proj(t_proj *proj, t_block ***s_map);
 void	_erase_proj(t_map *info, t_proj *proj, t_block ***s_map);
 void	_define_projectile(t_map *info, t_proj *proj, int keycode);
 

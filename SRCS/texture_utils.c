@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 14:43:12 by tmouche           #+#    #+#             */
-/*   Updated: 2024/02/27 18:08:29 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/03/01 18:25:25 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,6 +114,6 @@ void	_load_textures(t_struct *g)
 	colors.door = _txt_sprite(g, ft_strjoin(path, "door.txt"));
 	colors.empty = _txt_sprite(g, ft_strjoin(path, "empty.txt"));
 	colors.wall = _txt_sprite(g, ft_strjoin(path, "wall.txt"));
-	colors.proj = _txt_sprite(g, ft_strjoin(path, "proj.txt"));
+	colors.laser_1 = _txt_sprite(g, ft_strjoin(path, "laser_1.txt"));
 	_load_anim_textures(g, &colors);
 }

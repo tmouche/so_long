@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/31 15:53:48 by tmouche           #+#    #+#             */
-/*   Updated: 2024/03/01 16:39:34 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/03/01 18:42:18 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ typedef	struct	s_colors
 	int			*explosion_4;
 	int			*explosion_5;
 	int			*explosion_6;
+	int			*laser_1;
 }				t_colors;
 
 typedef struct	s_vars
@@ -96,13 +97,12 @@ typedef struct	s_offs
 
 typedef struct	s_proj
 {
-	int	o_x1;
-	int o_x2;
-	int x1;
-	int	x2;
-	int	limit;
-	int i;
-	int	shoot;
+	int 	o_x2;
+	int 	x1;
+	int		x2;
+	int		limit;
+	int		shoot;
+	t_block	*laser;
 }				t_proj;
 
 typedef struct	s_map
@@ -120,7 +120,6 @@ typedef struct	s_map
 	int			mv_y;
 	t_block		***s_map;
 	t_block		*empty;
-	t_block		*b_proj;
 	t_opps		**bad;
 	t_colors	*colors;
 	t_proj		*proj;

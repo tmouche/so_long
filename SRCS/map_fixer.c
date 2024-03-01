@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 10:34:19 by tmouche           #+#    #+#             */
-/*   Updated: 2024/03/01 15:23:04 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/03/01 18:37:31 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,8 +133,5 @@ void	_fixer_map(t_struct *g)
 	g->info->empty = malloc(sizeof(t_block));
 	if (!g->info->empty)
 		_free_all(g, 1);
-	g->info->b_proj = malloc(sizeof(t_block));
-	g->info->b_proj->bad = NULL;
-	g->info->b_proj->type = 'x';
 	_fill_map(g, g->info->c_map);
 }

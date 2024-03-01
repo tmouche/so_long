@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 11:54:22 by tmouche           #+#    #+#             */
-/*   Updated: 2024/03/01 14:09:15 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/03/01 18:25:40 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,8 +123,8 @@ static void	_free_texture_a(t_colors *colors)
 		free (colors->empty);
 	if (colors->wall)
 		free (colors->wall);
-	if (colors->proj)
-		free (colors->proj);
+	if (colors->laser_1)
+		free (colors->laser_1);
 	if (colors->p_shoot1_l)
 		free (colors->p_shoot1_l);
 	_free_texture_b(colors);
