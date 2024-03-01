@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   window_looper.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmouche < tmouche@student.42lyon.fr>       +#+  +:+       +#+        */
+/*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 15:23:10 by tmouche           #+#    #+#             */
-/*   Updated: 2024/02/29 22:12:10 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/03/01 15:00:52 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,30 @@
 #include <sys/time.h>
 #include <stdlib.h>
 
-/*static inline void	_refresh_anim(t_struct *g, int *multi)
+static inline void	_refresh_anim(t_opps *bad, int *multi)
 {
-	
-}*/
+	while (bad)
+	{
+		if (bad->state >= 0)
+		{
+			if (bad->state == 2)
+				bad->state = 0;
+			else
+				++bad->state;
+		}
+		else
+		{
+			if (bad->state == -6)
+				_lst_del_struct(bad);
+			else
+				--bad->state;
+		}
+		bad = bad->next;
+	}
+	++multi[0];
+	if (multi[0] == SPEED_ANIM)
+		multi[0] = 0;
+}
 
 static inline void	_character(t_struct *g, int *multi)
 {
@@ -33,11 +53,14 @@ static inline void	_character(t_struct *g, int *multi)
 		multi[0] = 0;
 }
 
-/*static inline void	_projectile(t_struct *g, t_proj* proj,
-								t_block ***s_map, int *multi)
+static inline void	_projectile(t_struct *g, int *multi)
 {
-	if (g->info->s_map[proj->x1][proj->x2])
-}*/
+	if (g->info->proj->limit > 0)
+		_throw_proj(g->info, g->info->proj, g->info->s_map);
+	++multi[0];
+	if (multi[0] == SPEED_PROJ)
+		multi[0] = 0;
+}
 
 static inline void	_framer(t_struct *g, int *multi)
 {
@@ -55,23 +78,23 @@ int	_exchanger(t_struct *g)
 {
 	struct timeval	clock;
 	static int		m_fps = 0;	
-	//static int		m_proj = 0;
+	static int		m_proj = 0;
 	static int		m_chara = 0;
-	//static int		m_anim = 0;
+	static int		m_anim = 0;
 
 	gettimeofday(&clock, NULL);
 	if (clock.tv_usec >= U_SEC / FPS * m_fps
 		&& clock.tv_usec <= U_SEC / FPS * (m_fps + 1))
 		_framer(g, &m_fps);
-	/*if (clock.tv_usec >= U_SEC / SPEED_PROJ * m_proj
+	if (clock.tv_usec >= U_SEC / SPEED_PROJ * m_proj
 		&& clock.tv_usec <= U_SEC / SPEED_PROJ * (m_proj + 1)
 		&& g->info->proj->limit > 0)
-		_projectile(g, &m_proj);*/
+		_projectile(g, &m_proj);
 	if (clock.tv_usec >= U_SEC / SPEED_CHARA * m_chara
 		&& clock.tv_usec <= U_SEC / SPEED_CHARA * (m_chara + 1))
 		_character(g, &m_chara);
-	/*if (clock.tv_usec >= U_SEC / SPEED_ANIM * m_anim
+	if (clock.tv_usec >= U_SEC / SPEED_ANIM * m_anim
 		&& clock.tv_usec <= U_SEC / SPEED_ANIM * (m_anim + 1))
-		_refresh_anim(g, &m_anim);*/
+		_refresh_anim(*(g->info->bad), &m_anim);
 	return (0);	
 }

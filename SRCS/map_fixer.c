@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 10:34:19 by tmouche           #+#    #+#             */
-/*   Updated: 2024/02/29 18:53:57 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/03/01 14:56:37 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ static void	_putchar_map(char c, t_struct *g, int x1, int x2)
 		block = malloc(sizeof(t_block));
 		if (!block)
 			_free_all(g, 1);
-		block->nature = c;
+		block->type = c;
 		block->bad = NULL;
 		if (c == 'D')
 		{
@@ -77,32 +77,6 @@ static void	_putchar_map(char c, t_struct *g, int x1, int x2)
 	}
 }
 
-/*static void	_putchar_map(char c, t_struct *g, int x1, int x2)
-{
-	t_block	*block;
-	int		temp_x1;
-	int		temp_x2;
-
-	block = malloc(sizeof(t_block));
-	if (!block)
-		_free_all(g, 1);
-	block->nature = c;
-	block->bad = NULL;
-	if (c == 'D')
-	{
-		block->bad = _fixer_opps(g->info->bad, x1, x2);
-		if (!block->bad)
-			_free_all(g, 0);
-	}
-	temp_x1 = -1;
-	while (++temp_x1 < 3)
-	{
-		temp_x2 = -1;
-		while (++temp_x2 < 3)
-			g->info->s_map[x1 + temp_x1][x2 + temp_x2] = block;
-	}
-}*/
-
 static void	_fill_map(t_struct *g, char **c_map)
 {
 	int	x1_s;
@@ -113,7 +87,7 @@ static void	_fill_map(t_struct *g, char **c_map)
 	x1_s = 0;
 	x1_c = -1;
 	g->info->empty->bad = NULL;
-	g->info->empty->nature = '0';
+	g->info->empty->type = '0';
 	while (c_map[++x1_c])
 	{
 		x2_s = 0;
@@ -159,5 +133,8 @@ void	_fixer_map(t_struct *g)
 	g->info->empty = malloc(sizeof(t_block));
 	if (!g->info->empty)
 		_free_all(g, 1);
+	g->info->b_proj = malloc(sizeof(t_block));
+	g->info->empty->bad = NULL;
+	g->info->empty->type = 'x';
 	_fill_map(g, g->info->c_map);
 }

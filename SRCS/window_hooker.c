@@ -1,17 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   hooker.c                                           :+:      :+:    :+:   */
+/*   window_hooker.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 18:13:03 by tmouche           #+#    #+#             */
-/*   Updated: 2024/02/27 19:17:14 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/03/01 14:54:12 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/minilibx-linux/mlx.h"
 #include "../HDRS/structure.h"
+#include "../HDRS/movement.h"
 #include "../HDRS/window.h"
 #include "../HDRS/texture.h"
 
@@ -25,8 +26,8 @@ int	_key_release(int keycode, t_struct *g)
 		g->info->mv_y = 0;
 	if (keycode == 'd')
 		g->info->mv_x = 0;
-	//if (keycode >= 65361 && keycode <= 65364 && g->info->proj->limit == 0)
-		//ft_set_proj(g->info, keycode);
+	if (keycode >= 65361 && keycode <= 65364 && g->info->proj->limit == 0)
+		_define_projectile(g->info, g->info->proj, keycode);
 	return (0);
 }
 

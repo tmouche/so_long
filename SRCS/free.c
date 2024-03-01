@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 11:54:22 by tmouche           #+#    #+#             */
-/*   Updated: 2024/02/27 18:11:35 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/03/01 14:09:15 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	_freemap(char **map)
 	free(map);
 }
 
-static void	_free_s_map(t_block ***s_map, int stop)
+static void	_free_s_map(t_map *info, t_block ***s_map, int stop)
 {
 	int	temp;
 	int	x1;
@@ -38,9 +38,10 @@ static void	_free_s_map(t_block ***s_map, int stop)
 		{
 			while (s_map[x1][x2])
 			{
-				if (s_map[x1][x2]->nature == 'D' && s_map[x1][x2]->bad)
+				if (s_map[x1][x2]->type == 'D' && s_map[x1][x2]->bad)
 					free (s_map[x1][x2]->bad);
-				free (s_map[x1][x2]);
+				if (s_map[x1][x2]->type != '0')
+					free (s_map[x1][x2]);
 				x2 += 3;
 			}
 		}
@@ -49,6 +50,7 @@ static void	_free_s_map(t_block ***s_map, int stop)
 			free (s_map[x1 + temp]);
 		x1 += 3;
 	}
+	free (info->empty);
 	free (s_map);
 }
 
@@ -132,7 +134,7 @@ void	_free_all(t_struct *g, int stop)
 {
 	_freemap(g->info->c_map);
 	if (stop >= 0)
-		_free_s_map(g->info->s_map, stop);
+		_free_s_map(g->info, g->info->s_map, stop);
 	if (stop > 1)
 		_free_mlx(g->vars, g->img, stop);
 	if (stop > 4)

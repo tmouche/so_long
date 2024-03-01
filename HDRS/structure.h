@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/31 15:53:48 by tmouche           #+#    #+#             */
-/*   Updated: 2024/02/29 18:27:17 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/03/01 14:47:55 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 # define SSIZE_X 1920
 # define SSIZE_Y 1020
 # define FPS 60
-# define SPEED_CHARA 3
+# define SPEED_CHARA 5
 # define SPEED_PROJ 10
 # define SPEED_ANIM 10
 # define U_SEC 999999
@@ -36,7 +36,7 @@ typedef struct	s_opps
 
 typedef	struct	s_block
 {
-	char	nature;
+	char	type;
 	t_opps	*bad;
 }				t_block;
 
@@ -119,6 +119,7 @@ typedef struct	s_map
 	int			mv_y;
 	t_block		***s_map;
 	t_block		*empty;
+	t_block		*b_proj;
 	t_opps		**bad;
 	t_colors	*colors;
 	t_proj		*proj;
@@ -154,6 +155,7 @@ void	_lstclear(t_opps **lst);
 t_opps	*_lstnew(int x1, int x2);
 int		_lstadd_back(t_opps **lst, t_opps *new);
 void	_lstadd_front(t_opps **lst, t_opps *new);
+void	_lst_del_struct(t_opps *lst);
 
 void	_free_all(t_struct *glob, int stop);
 void	_freemap(char **map);

@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 13:54:24 by tmouche           #+#    #+#             */
-/*   Updated: 2024/02/28 18:37:17 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/03/01 13:24:42 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,8 @@ void	_window(t_struct *g)
 	_load_textures(g);
 	_texture_to_img(g, g->info, g->info->s_map);
 	mlx_put_image_to_window(g->vars->mlx, g->vars->win, g->img->img, 0, 0);
-	mlx_hook(g->vars->win, 2, 1L << 1, _key_release, g);
+	//mlx_hook(g->vars->win, 2, 1L << 1, _key_release, g);
+	mlx_key_hook(g->vars->win, _key_release, g);
 	mlx_hook(g->vars->win, 2, 1L << 0, _key_press, g);
 	mlx_loop_hook(g->vars->mlx, _exchanger, g);
 	mlx_loop(g->vars->mlx);

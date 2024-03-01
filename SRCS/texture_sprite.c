@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   texture_sprite.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmouche < tmouche@student.42lyon.fr>       +#+  +:+       +#+        */
+/*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 17:32:04 by tmouche           #+#    #+#             */
-/*   Updated: 2024/02/23 18:48:57 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/03/01 14:09:48 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,7 +79,7 @@ static int	*_sprite_anim_player_l(t_colors *colors, int state)
 
 static int	*_sprite_animation(t_map *info, t_block *block)
 {
-	if (block->nature == 'D')
+	if (block->type == 'D')
 		return (_sprite_anim_opps(info->colors, block->bad->state));
 	else
 	{

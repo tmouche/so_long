@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   movement_checker.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmouche < tmouche@student.42lyon.fr>       +#+  +:+       +#+        */
+/*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 15:54:06 by tmouche           #+#    #+#             */
-/*   Updated: 2024/02/29 22:20:33 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/03/01 14:09:36 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static int	_opps_check(t_struct *g, t_map *info, int (*cc)[2])
 	i = 0;
 	while (i < 3)
 	{
-		c = info->s_map[cc[i][0]][cc[i][1]]->nature;
+		c = info->s_map[cc[i][0]][cc[i][1]]->type;
 		if (c != '0' && c != 'P')
 			return (0);
 		++i;
@@ -30,7 +30,7 @@ static int	_opps_check(t_struct *g, t_map *info, int (*cc)[2])
 	i = 0;
 	while (i < 3)
 	{
-		c = info->s_map[cc[i][0]][cc[i][1]]->nature;
+		c = info->s_map[cc[i][0]][cc[i][1]]->type;
 		if (c == 'P')
 			_kill_player(g);
 		++i;
@@ -46,7 +46,7 @@ static int	_player_check(t_struct *g, t_map *info, int (*cc)[2], int limit)
 	i = 0;
 	while (i < limit)
 	{
-		c = info->s_map[cc[i][0]][cc[i][1]]->nature;
+		c = info->s_map[cc[i][0]][cc[i][1]]->type;
 		if (c == '1' || c == '2' || (c == 'E' && info->collect != 0))
 			return (0);
 		++i;
@@ -54,7 +54,7 @@ static int	_player_check(t_struct *g, t_map *info, int (*cc)[2], int limit)
 	i = 0;
 	while (i < limit)
 	{
-		c = info->s_map[cc[i][0]][cc[i][1]]->nature;
+		c = info->s_map[cc[i][0]][cc[i][1]]->type;
 		if (c == 'D')
 			_kill_player(g);
 		else if (c == 'C')

@@ -6,7 +6,7 @@
 #    By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/18 10:53:51 by tmouche           #+#    #+#              #
-#    Updated: 2024/02/28 18:33:47 by tmouche          ###   ########.fr        #
+#    Updated: 2024/03/01 14:52:13 by tmouche          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ SRCS := chained_list_utils1.c map_creator_utils.c texture_loc.c \
         map_all_utils.c window_utils.c \
         map_checker.c map_creator.c window_hooker.c \
 		movement_checker_utils.c movement_checker.c movement_chara.c movement_event.c movement_utils.c\
-		window_looper.c
+		window_looper.c movement_projectile.c
 
 SRCS_D := SRCS/
 HDRS_D := HDRS/
