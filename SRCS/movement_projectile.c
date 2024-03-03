@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   movement_projectile.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
+/*   By: tmouche < tmouche@student.42lyon.fr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 11:40:46 by tmouche           #+#    #+#             */
-/*   Updated: 2024/03/01 19:07:38 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/03/02 18:09:38 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,17 @@
 #include <X11/keysym.h>
 #include <stdio.h>
 
-void	_erase_proj(t_map *info, t_proj *proj, t_block ***s_map)
+void	_erase_proj(t_map *info, t_proj *laser, t_block ***s_map)
 {
-	while (s_map[proj->x1][proj->x2] == proj->laser)
+	int	i;
+
+	i = 0;
+	while (s_map[laser->x1][laser->x2 + i] == laser->laser)
 	{
-		_reset_chara(info, s_map, proj->x1, proj->x2);
-		proj->x2 += 3;
+		s_map[laser->x1][laser->x2 + i] = info->empty;
+		s_map[laser->x1 + 1][laser->x2 + i] = info->empty;
+		s_map[laser->x1 + 2][laser->x2 + i] = info->empty;
+		++i;
 	}
 }
 
@@ -38,20 +43,60 @@ void	_define_projectile(t_map *info, t_proj *proj, int keycode)
 		info->vec *= -1;
 }
 
-void	_throw_proj(t_proj *proj, t_block ***s_map)
+static void	_active_laser(t_block ***s_map, t_proj *laser)
 {
 	int	offset;
 
-	offset = proj->x2 + (proj->limit * proj->o_x2);
-	
-	_replace_chara(s_map, proj->laser, proj->x1, offset);
-	if (proj->limit >= RANGE_LASER)
+	offset = laser->x2 + (laser->limit * laser->o_x2);
+	s_map[laser->x1][laser->x2 + offset] = laser->laser;
+	s_map[laser->x1 + 1][laser->x2 + offset] = laser->laser;
+	s_map[laser->x1 + 2][laser->x2 + offset] = laser->laser;
+	++laser->limit;
+}
+
+static int	_laser_check(t_map *info, int (*cc)[2])
+{
+	int		i;
+
+	i = 0;
+	while (i < 3)
 	{
-		proj->limit = -1;
-		proj->shoot = 0;
+		if (info->s_map[cc[i][0]][cc[i][1]] != info->empty
+			|| !info->s_map[cc[i][0]][cc[i][1]]->bad)
+			return (0);
+		++i;
+			
 	}
-	else
-		proj->limit += 3;
+	i = 0;
+	while (i < 3)
+	{
+		if (info->s_map[cc[i][0]][cc[i][1]]->bad)
+		{
+			if (info->s_map[cc[i][0]][cc[i][1]]->bad->state >= 0)
+				info->s_map[cc[i][0]][cc[i][1]]->bad->state = -1;
+			return (0);
+		}
+		++i;
+	}
+	return (1);
+}
+
+void	_laser(t_map *info, t_proj *laser)
+{
+	int	check_l[3][2];
+
+	while (laser->limit <= RANGE_LASER && laser->limit >= 0)
+	{
+		_check_v(laser->x1, laser->x2, laser->o_x2, check_l);
+		if (_laser_check(info, check_l) == 1)
+			_active_laser(info->s_map, laser);
+		else
+			laser->limit = -1;	
+	}
+	if (laser->limit > RANGE_LASER)
+		laser->limit = -1;
+	
+	
 }
 
 /*void	_erase_proj(t_map *info, t_proj *proj, t_block ***s_map)
