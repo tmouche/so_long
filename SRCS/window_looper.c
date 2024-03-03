@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   window_looper.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmouche < tmouche@student.42lyon.fr>       +#+  +:+       +#+        */
+/*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 15:23:10 by tmouche           #+#    #+#             */
-/*   Updated: 2024/03/02 18:08:43 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/03/03 16:55:28 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,34 +17,6 @@
 #include "../HDRS/window.h"
 #include <sys/time.h>
 #include <stdlib.h>
-
-static inline void	_refresh_anim(t_map *info, t_opps *bad, int *multi)
-{
-	while (bad)
-	{
-		if (bad->state >= 0)
-		{
-			if (bad->state == 2)
-				bad->state = 0;
-			else
-				++bad->state;
-		}
-		else
-		{
-			if (bad->state == -6)
-			{
-				_reset_chara(info, info->s_map, bad->x1, bad->x2);
-				_lst_del_struct(bad);
-			}
-			else
-				--bad->state;
-		}
-		bad = bad->next;
-	}
-	++multi[0];
-	if (multi[0] == SPEED_ANIM)
-		multi[0] = 0;
-}
 
 static inline void	_character(t_struct *g, int *multi)
 {
@@ -58,10 +30,18 @@ static inline void	_character(t_struct *g, int *multi)
 
 static inline void	_projectile(t_struct *g, int *multi)
 {
+	static int	looper = 0;
+	
+	if (looper == 15)
+	{
+		_erase_proj(g->info, g->info->proj, g->info->s_map);
+		g->info->proj->shoot = 0;
+		looper = 0;
+	}
 	if (g->info->proj->limit >= 0)
 		_laser(g->info, g->info->proj);
 	else if (g->info->proj->shoot == 3)
-		_erase_proj(g->info, g->info->proj, g->info->s_map);
+		++looper;
 	++multi[0];
 	if (multi[0] == SPEED_LASER)
 		multi[0] = 0;
@@ -93,7 +73,7 @@ int	_exchanger(t_struct *g)
 		_framer(g, &m_fps);
 	if (clock.tv_usec >= U_SEC / SPEED_LASER * m_laser
 		&& clock.tv_usec <= U_SEC / SPEED_LASER * (m_laser + 1)
-		&& g->info->proj->limit >= 0)
+		&& g->info->proj->shoot > 0)
 		_projectile(g, &m_laser);
 	if (clock.tv_usec >= U_SEC / SPEED_CHARA * m_chara
 		&& clock.tv_usec <= U_SEC / SPEED_CHARA * (m_chara + 1))

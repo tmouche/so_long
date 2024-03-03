@@ -6,11 +6,23 @@
 /*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 17:32:04 by tmouche           #+#    #+#             */
-/*   Updated: 2024/03/01 18:25:06 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/03/03 16:35:04 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../HDRS/structure.h"
+
+static int	*_sprite_anim_proj(t_colors *colors, int state)
+{
+	if (state == 1)
+		return (colors->laser_1_r);
+	if (state == 2)
+		return (colors->laser_2_r);
+	if (state == 3)
+		return (colors->laser_3_r);
+	else
+		return (colors->laser_3_r);
+}
 
 static int	*_sprite_anim_opps(t_colors *colors, int state)
 {
@@ -103,7 +115,7 @@ int	*_sprite_stock(t_map *info, t_block *block, char c)
 	if (c == 'C')
 		return (info->colors->collect);
 	if (c == 'x')
-		return (info->colors->laser_1);
+		return (_sprite_anim_proj(info->colors, info->proj->shoot));
 	else
 		return (NULL);
 }

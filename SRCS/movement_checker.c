@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 15:54:06 by tmouche           #+#    #+#             */
-/*   Updated: 2024/03/01 14:09:36 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/03/03 16:37:41 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,8 @@ void	_player(t_struct *g, t_map *info, int o_x2)
 	int	check_l[3][2];
 	int	check_d[1][2];
 	
+	if (info->proj->shoot != 0)
+		return ;
 	if (o_x2 != 0 && info->vec != o_x2)
 		info->vec *= -1;
 	_check_v(info->p_x1, info->p_x2, info->mv_y, check_l);

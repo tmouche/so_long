@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 12:44:24 by tmouche           #+#    #+#             */
-/*   Updated: 2024/03/01 18:35:47 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/03/03 15:46:30 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ static inline void	_print_sprite(t_struct *g, t_block *blk, int *pxl, char c)
 
 static inline void	_decider(t_struct *g, t_block ***s_map, int *cc, int *pxl)
 {
-	if ((s_map[cc[0]][cc[1]]->type == 'D' || s_map[cc[0]][cc[1]]->type == 'P'
-		|| s_map[cc[0]][cc[1]]->type == 'x') && s_map[cc[0]][cc[1]] != s_map[cc[0] - 1][cc[1]])
+	if ((s_map[cc[0]][cc[1]]->type == 'D' || s_map[cc[0]][cc[1]]->type == 'P')
+		&& s_map[cc[0]][cc[1]] != s_map[cc[0] - 1][cc[1]])
 	{
 		_print_sprite(g, s_map[cc[0]][cc[1]], pxl, s_map[cc[0]][cc[1]]->type);
 		cc[1] += 3;
@@ -48,6 +48,9 @@ static inline void	_decider(t_struct *g, t_block ***s_map, int *cc, int *pxl)
 	}
 	else
 	{
+		 if  (s_map[cc[0]][cc[1]]->type == 'x' 
+		 		&& s_map[cc[0]][cc[1]] != s_map[cc[0] - 1][cc[1]])
+			_print_sprite(g, s_map[cc[0]][cc[1]], pxl, s_map[cc[0]][cc[1]]->type);
 		++cc[1];
 		pxl[1] += SPR_S / 3;
 	}

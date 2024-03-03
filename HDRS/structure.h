@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/31 15:53:48 by tmouche           #+#    #+#             */
-/*   Updated: 2024/03/01 18:42:18 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/03/03 17:02:00 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@
 # define SSIZE_Y 1020
 # define FPS 60
 # define SPEED_CHARA 10
-# define SPEED_LASER 15
+# define SPEED_LASER 100
 # define SPEED_ANIM 10
-# define RANGE_LASER 6
+# define RANGE_LASER 10
 # define U_SEC 999999
 # include <stddef.h>
 
@@ -78,7 +78,9 @@ typedef	struct	s_colors
 	int			*explosion_4;
 	int			*explosion_5;
 	int			*explosion_6;
-	int			*laser_1;
+	int			*laser_1_r;
+	int			*laser_2_r;
+	int			*laser_3_r;
 }				t_colors;
 
 typedef struct	s_vars
@@ -158,6 +160,7 @@ void	_lstadd_front(t_opps **lst, t_opps *new);
 void	_lst_del_struct(t_opps *lst);
 
 void	_free_all(t_struct *glob, int stop);
+void	_free_texture_a(t_colors *colors);
 void	_freemap(char **map);
 
 void	_init_t_colors(t_colors *colors);
