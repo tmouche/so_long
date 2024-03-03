@@ -6,11 +6,12 @@
 /*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 05:08:26 by tmouche           #+#    #+#             */
-/*   Updated: 2024/02/22 12:21:50 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/03/03 20:45:17 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_printf/ft_printf.h"
+#include "../include/libft/libft.h"
 #include "../HDRS/structure.h"
 #include <stdlib.h>
 #include <time.h>
@@ -36,26 +37,34 @@ void	_write_err(int err)
 	else if (write_err > 0 && err == 2)
 		ft_printf("Non resolvable map\n");
 	else if (write_err > 0 && err == 3)
-		ft_printf("wrong map shape\n");
+		ft_printf("Wrong map shape\n");
 	else if (write_err > 0 && err == 404)
 		ft_printf("Map not found\n");
 }
 
-void	_reset_map(char **map)
+char	**_copy_map(char **src)
 {
-	int	x1;
-	int	x2;
-
+	char	**dst;
+	int		x1;
+	int		x2;
+	
 	x1 = 0;
-	while (map[x1])
+	while (src[x1])
+		++x1;
+	dst = malloc(sizeof(char *) * (x1 + 1));
+	if (!dst)
+		return (NULL);
+	dst[x1] = 0;
+	x1 = -1;
+	while (src[++x1])
 	{
-		x2 = 0;
-		while (map[x1][x2])
-		{
-			if (map[x1][x2] == '2')
-				map[x1][x2] = '0';
-			x2++;
-		}
-		x1++;
+		dst[x1] = malloc(ft_strlen(src[x1], 0) + 1);
+		if (!dst[x1])
+			return (_freemap(dst), NULL);
+		x2 = -1;
+		while (src[x1][++x2])
+			dst[x1][x2] = src[x1][x2];
+		dst[x1][x2] = 0;
 	}
+	return (dst);
 }

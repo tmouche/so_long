@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 11:54:22 by tmouche           #+#    #+#             */
-/*   Updated: 2024/03/03 17:15:46 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/03/03 20:34:15 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,10 @@ void	_freemap(char **map)
 
 	i = 0;
 	while (map[i])
-		free(map[i++]);
+	{
+		free(map[i]);
+		++i;
+	}
 	free(map);
 }
 
