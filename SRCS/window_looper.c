@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 15:23:10 by tmouche           #+#    #+#             */
-/*   Updated: 2024/03/03 16:55:28 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/03/03 17:38:16 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static inline void	_character(t_struct *g, int *multi)
 static inline void	_projectile(t_struct *g, int *multi)
 {
 	static int	looper = 0;
-	
+
 	if (looper == 15)
 	{
 		_erase_proj(g->info, g->info->proj, g->info->s_map);
@@ -81,5 +81,5 @@ int	_exchanger(t_struct *g)
 	if (clock.tv_usec >= U_SEC / SPEED_ANIM * m_anim
 		&& clock.tv_usec <= U_SEC / SPEED_ANIM * (m_anim + 1))
 		_refresh_anim(g->info, *(g->info->bad), &m_anim);
-	return (0);	
+	return (0);
 }

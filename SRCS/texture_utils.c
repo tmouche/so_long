@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 14:43:12 by tmouche           #+#    #+#             */
-/*   Updated: 2024/03/03 16:34:27 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/03/03 17:34:48 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ static int	*_txt_sprite(t_struct *g, char *str)
 	int		i[1];
 	int		index;
 
-	fd = open(str, O_RDONLY);	
+	fd = open(str, O_RDONLY);
 	free (str);
 	*i = read(fd, buff, BUFFER_SIZE);
 	close(fd);

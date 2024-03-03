@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   movement_utils.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmouche < tmouche@student.42lyon.fr>       +#+  +:+       +#+        */
+/*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 14:16:29 by tmouche           #+#    #+#             */
-/*   Updated: 2024/02/29 22:23:33 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/03/03 17:36:12 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	_reset_chara(t_map *info, t_block ***s_map, int x1, int x2)
 {
 	int	offset_x1;
 	int	offset_x2;
-	
+
 	offset_x1 = 0;
 	while (offset_x1 < 3)
 	{
@@ -34,7 +34,7 @@ void	_replace_chara(t_block ***s_map, t_block *block, int x1, int x2)
 {
 	int	offset_x1;
 	int	offset_x2;
-	
+
 	offset_x1 = 0;
 	while (offset_x1 < 3)
 	{

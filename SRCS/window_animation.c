@@ -6,14 +6,14 @@
 /*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 16:47:13 by tmouche           #+#    #+#             */
-/*   Updated: 2024/03/03 16:56:27 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/03/03 17:39:25 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../HDRS/structure.h"
 #include "../HDRS/movement.h"
 
-static inline void _anim_ennemies(t_map *info, t_opps *bad)
+static inline void	_anim_ennemies(t_map *info, t_opps *bad)
 {
 	while (bad)
 	{
@@ -40,7 +40,8 @@ static inline void _anim_ennemies(t_map *info, t_opps *bad)
 
 static inline void	_anim_player(t_map *info)
 {
-	if (info->player_state <= 10 && info->player_state > 0 && info->proj->limit == -1)
+	if (info->player_state <= 10 && info->player_state > 0
+		&& info->proj->limit == -1)
 		info->player_state++;
 	else
 		info->player_state = 0;

@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 18:13:03 by tmouche           #+#    #+#             */
-/*   Updated: 2024/03/01 17:15:51 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/03/03 17:35:06 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	_key_release(int keycode, t_struct *g)
 	return (0);
 }
 
-int _key_press(int keycode, t_struct *g)
+int	_key_press(int keycode, t_struct *g)
 {
 	if (keycode == 'w')
 		g->info->mv_y = -1;

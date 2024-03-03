@@ -6,13 +6,13 @@
 /*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 17:32:04 by tmouche           #+#    #+#             */
-/*   Updated: 2024/03/03 16:35:04 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/03/03 17:34:35 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../HDRS/structure.h"
 
-static int	*_sprite_anim_proj(t_colors *colors, int state)
+static inline int	*_sprite_anim_proj(t_colors *colors, int state)
 {
 	if (state == 1)
 		return (colors->laser_1_r);
@@ -24,7 +24,7 @@ static int	*_sprite_anim_proj(t_colors *colors, int state)
 		return (colors->laser_3_r);
 }
 
-static int	*_sprite_anim_opps(t_colors *colors, int state)
+static inline int	*_sprite_anim_opps(t_colors *colors, int state)
 {
 	if (state >= 0)
 	{
@@ -53,27 +53,9 @@ static int	*_sprite_anim_opps(t_colors *colors, int state)
 	return (NULL);
 }
 
-static int	*_sprite_anim_player_r(t_colors *colors, int state)
+static inline int	*_anim_player(t_colors *colors, int vec, int state)
 {
-	if (state != 0)
-	{
-		if (state <= 2 && state >= 0)
-			return (colors->p_shoot1_r);
-		else if (state <= 4)
-			return (colors->p_shoot2_r);
-		else if (state <= 6)
-			return (colors->p_shoot3_r);
-		else if (state <= 8)
-			return (colors->p_shoot4_r);
-		else if (state <= 10)
-			return (colors->p_shoot5_r);
-	}
-	return (colors->p_r);
-}
-
-static int	*_sprite_anim_player_l(t_colors *colors, int state)
-{
-	if (state != 0)
+	if (vec != 1)
 	{
 		if (state <= 2)
 			return (colors->p_shoot1_l);
@@ -86,19 +68,35 @@ static int	*_sprite_anim_player_l(t_colors *colors, int state)
 		else if (state <= 10)
 			return (colors->p_shoot5_l);
 	}
-	return (colors->p_l);
+	if (state <= 2)
+		return (colors->p_shoot1_r);
+	else if (state <= 4)
+		return (colors->p_shoot2_r);
+	else if (state <= 6)
+		return (colors->p_shoot3_r);
+	else if (state <= 8)
+		return (colors->p_shoot4_r);
+	else if (state <= 10)
+		return (colors->p_shoot5_r);
+	else
+		return (colors->p_r);
 }
 
-static int	*_sprite_animation(t_map *info, t_block *block)
+static inline int	*_sprite_animation(t_map *info, t_block *block)
 {
 	if (block->type == 'D')
 		return (_sprite_anim_opps(info->colors, block->bad->state));
 	else
 	{
-		if (info->vec == 1)
-			return (_sprite_anim_player_r(info->colors, info->player_state));
+		if (info->player_state == 0)
+		{
+			if (info->vec == 1)
+				return (info->colors->p_r);
+			else
+				return (info->colors->p_l);
+		}
 		else
-			return (_sprite_anim_player_l(info->colors, info->player_state));
+			return (_anim_player(info->colors, info->vec, info->player_state));
 	}
 }
 

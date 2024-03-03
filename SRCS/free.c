@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 11:54:22 by tmouche           #+#    #+#             */
-/*   Updated: 2024/03/03 17:01:20 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/03/03 17:15:46 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,6 @@ static void	_free_s_map(t_map *info, t_block ***s_map, int stop)
 			{
 				if (s_map[x1][x2]->type == 'D' && s_map[x1][x2]->bad)
 					free (s_map[x1][x2]->bad);
-				if (s_map[x1][x2]->type != '0')
-					free (s_map[x1][x2]);
 				x2 += 3;
 			}
 		}

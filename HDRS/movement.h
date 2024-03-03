@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   movement.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tmouche < tmouche@student.42lyon.fr>       +#+  +:+       +#+        */
+/*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 12:54:49 by tmouche           #+#    #+#             */
-/*   Updated: 2024/03/02 18:04:48 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/03/03 17:11:56 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 void	_check_v(int x1, int x2, int o_x1, int (*check)[2]);
 void	_check_h(int x1, int x2, int o_x2, int (*check)[2]);
-void	_check_d(int x1, int x2, int m_x1, int m_x2, int (*check)[2]);
+void	_check_d(int x1, int x2, int *mv, int (*check)[2]);
 
 void	_door(t_struct *g);
 void	_kill_player(t_struct *g);

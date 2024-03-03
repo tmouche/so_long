@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 16:40:47 by tmouche           #+#    #+#             */
-/*   Updated: 2024/03/01 18:47:31 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/03/03 17:19:57 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ char	*_strjoin_map(char *s1, char *s2)
 
 void	_init_t_map(t_map *info, int x1, int x2, int collect)
 {
+	static t_block	empty;
 	static t_proj	proj;
 	static t_block	laser;
 
@@ -67,6 +68,9 @@ void	_init_t_map(t_map *info, int x1, int x2, int collect)
 	info->mv_x = 0;
 	info->mv_y = 0;
 	info->proj = &proj;
+	info->empty = &empty;
+	empty.bad = NULL;
+	empty.type = '0';
 	proj.limit = -1;
 	proj.o_x2 = 0;
 	proj.laser = &laser;

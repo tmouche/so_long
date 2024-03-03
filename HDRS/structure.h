@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/31 15:53:48 by tmouche           #+#    #+#             */
-/*   Updated: 2024/03/03 17:02:00 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/03/03 17:07:36 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 # define U_SEC 999999
 # include <stddef.h>
 
-typedef struct	s_opps
+typedef struct s_opps
 {
 	int				x1;
 	int				x2;
@@ -35,13 +35,13 @@ typedef struct	s_opps
 	struct s_opps	*next;
 }				t_opps;
 
-typedef	struct	s_block
+typedef struct s_block
 {
 	char	type;
 	t_opps	*bad;
 }				t_block;
 
-typedef struct	s_data
+typedef struct s_data
 {
 	void			*img;
 	char			*addr;
@@ -50,16 +50,16 @@ typedef struct	s_data
 	int				endian;
 }					t_data;
 
-typedef	struct	s_colors
+typedef struct s_colors
 {
 	int			*p_r;
 	int			*p_l;
 	int			*opps_bot;
 	int			*opps_top;
 	int			*opps_mid;
-	int 		*empty;
-	int 		*wall;
-	int 		*collect;
+	int			*empty;
+	int			*wall;
+	int			*collect;
 	int			*door;
 	int			*proj;
 	int			*p_shoot2_l;
@@ -83,13 +83,13 @@ typedef	struct	s_colors
 	int			*laser_3_r;
 }				t_colors;
 
-typedef struct	s_vars
+typedef struct s_vars
 {
 	void	*mlx;
 	void	*win;
 }				t_vars;
 
-typedef struct	s_offs
+typedef struct s_offs
 {
 	int	u;
 	int	d;
@@ -97,17 +97,17 @@ typedef struct	s_offs
 	int	r;
 }				t_offs;
 
-typedef struct	s_proj
+typedef struct s_proj
 {
-	int 	o_x2;
-	int 	x1;
+	int		o_x2;
+	int		x1;
 	int		x2;
 	int		limit;
 	int		shoot;
 	t_block	*laser;
 }				t_proj;
 
-typedef struct	s_map
+typedef struct s_map
 {
 	int			map_width;
 	int			map_height;
@@ -127,7 +127,7 @@ typedef struct	s_map
 	t_proj		*proj;
 }				t_map;
 
-typedef	struct	s_path
+typedef struct s_path
 {
 	char	*empty;
 	char	*door;
@@ -138,17 +138,11 @@ typedef	struct	s_path
 	char	*proj;
 }				t_path;
 
-typedef struct	s_perf
-{
-	unsigned int	fps;
-}				t_perf;
-
-typedef struct	s_struct
+typedef struct s_struct
 {
 	t_map			*info;
 	t_vars			*vars;
 	t_data			*img;
-	t_perf			*perf;
 }				t_struct;
 
 int		_lstsize(t_opps *lst);
@@ -163,7 +157,6 @@ void	_free_all(t_struct *glob, int stop);
 void	_free_texture_a(t_colors *colors);
 void	_freemap(char **map);
 
-void	_init_t_colors(t_colors *colors);
 void	_init_t_map(t_map *info, int x1, int x2, int collect);
 
 #endif

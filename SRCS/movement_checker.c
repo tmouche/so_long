@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 15:54:06 by tmouche           #+#    #+#             */
-/*   Updated: 2024/03/03 16:37:41 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/03/03 17:35:58 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static int	_opps_check(t_struct *g, t_map *info, int (*cc)[2])
 {
 	char	c;
 	int		i;
-	
+
 	i = 0;
 	while (i < 3)
 	{
@@ -91,7 +91,8 @@ void	_player(t_struct *g, t_map *info, int o_x2)
 {
 	int	check_l[3][2];
 	int	check_d[1][2];
-	
+	int	mv[2];
+
 	if (info->proj->shoot != 0)
 		return ;
 	if (o_x2 != 0 && info->vec != o_x2)
@@ -104,7 +105,9 @@ void	_player(t_struct *g, t_map *info, int o_x2)
 		return ;
 	if (info->mv_y != 0 && info->mv_x != 0)
 	{
-		_check_d(info->p_x1, info->p_x2, info->mv_y, info->mv_x, check_d);
+		mv[0] = info->mv_y;
+		mv[1] = info->mv_x;
+		_check_d(info->p_x1, info->p_x2, mv, check_d);
 		if (_player_check(g, info, (int (*)[2])check_d, 1) == 0)
 			return ;
 	}

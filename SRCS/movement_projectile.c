@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 11:40:46 by tmouche           #+#    #+#             */
-/*   Updated: 2024/03/03 16:58:58 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/03/03 17:37:33 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,9 @@ void	_define_projectile(t_map *info, t_proj *proj, int keycode)
 	proj->o_x2 = keycode % 10 - 2;
 	proj->x1 = info->p_x1;
 	if (keycode == XK_Left)
-		proj->x2 = info->p_x2 - 1;	
+		proj->x2 = info->p_x2 - 1;
 	else if (keycode == XK_Right)
-		proj->x2 = info->p_x2 + 3;	
+		proj->x2 = info->p_x2 + 3;
 	if (proj->o_x2 != 0 && info->vec != proj->o_x2)
 		info->vec *= -1;
 }
@@ -79,7 +79,6 @@ static int	_laser_check(t_map *info, int (*cc)[2])
 			if (info->s_map[cc[i][0]][cc[i][1]]->bad == NULL)
 				return (0);
 		++i;
-			
 	}
 	i = 0;
 	while (i < 3)
@@ -101,7 +100,8 @@ void	_laser(t_map *info, t_proj *laser)
 
 	if (laser->limit <= RANGE_LASER && laser->limit >= 0)
 	{
-		_check_h(info->p_x1, info->p_x2 + (laser->limit * laser->o_x2), laser->o_x2, check_l);
+		_check_h(info->p_x1, info->p_x2 + (laser->limit * laser->o_x2),
+			laser->o_x2, check_l);
 		if (_laser_check(info, check_l) == 1)
 			_active_laser(info->s_map, laser);
 		else
