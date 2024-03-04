@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 11:40:46 by tmouche           #+#    #+#             */
-/*   Updated: 2024/03/03 17:37:33 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/03/04 18:55:36 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	_define_projectile(t_map *info, t_proj *proj, int keycode)
 		proj->x2 = info->p_x2 - 1;
 	else if (keycode == XK_Right)
 		proj->x2 = info->p_x2 + 3;
-	if (proj->o_x2 != 0 && info->vec != proj->o_x2)
+	if (info->vec != proj->o_x2)
 		info->vec *= -1;
 }
 

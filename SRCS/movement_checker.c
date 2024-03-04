@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 15:54:06 by tmouche           #+#    #+#             */
-/*   Updated: 2024/03/03 17:35:58 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/03/04 19:42:30 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ static int	_opps_check(t_struct *g, t_map *info, int (*cc)[2])
 	{
 		c = info->s_map[cc[i][0]][cc[i][1]]->type;
 		if (c != '0' && c != 'P')
+			return (0);
+		else if (c == 'P' && info->unkillable == 1)
 			return (0);
 		++i;
 	}
@@ -43,16 +45,15 @@ static int	_player_check(t_struct *g, t_map *info, int (*cc)[2], int limit)
 	char	c;
 	int		i;
 
-	i = 0;
-	while (i < limit)
+	i = -1;
+	while (++i < limit)
 	{
 		c = info->s_map[cc[i][0]][cc[i][1]]->type;
 		if (c == '1' || c == '2' || (c == 'E' && info->collect != 0))
 			return (0);
-		++i;
 	}
-	i = 0;
-	while (i < limit)
+	i = -1;
+	while (++i < limit)
 	{
 		c = info->s_map[cc[i][0]][cc[i][1]]->type;
 		if (c == 'D')
@@ -60,8 +61,10 @@ static int	_player_check(t_struct *g, t_map *info, int (*cc)[2], int limit)
 		else if (c == 'C')
 			_collectible(info, cc[i][0], cc[i][1]);
 		else if (c == 'E')
+		{
 			_door(g);
-		++i;
+			return (0);
+		}
 	}
 	return (1);
 }
@@ -87,7 +90,7 @@ void	_ennemies(t_struct *g, t_map *info, t_opps *bad)
 	}
 }
 
-void	_player(t_struct *g, t_map *info, int o_x2)
+void	_player(t_struct *g, t_map *info)
 {
 	int	check_l[3][2];
 	int	check_d[1][2];
@@ -95,7 +98,7 @@ void	_player(t_struct *g, t_map *info, int o_x2)
 
 	if (info->proj->shoot != 0)
 		return ;
-	if (o_x2 != 0 && info->vec != o_x2)
+	if (info ->mv_x != 0 && info->vec != info->mv_x)
 		info->vec *= -1;
 	_check_v(info->p_x1, info->p_x2, info->mv_y, check_l);
 	if (_player_check(g, info, check_l, 3) == 0)

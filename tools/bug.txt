@@ -5,9 +5,7 @@ right : 65363
 
 ||||||||||||||||
 
-player flick after shoot 
 short shoot up down
 death anim
-cam bug when left edge reached
 shoot sprite 
 write win or lose in 0 and steps if win 

@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/31 15:53:48 by tmouche           #+#    #+#             */
-/*   Updated: 2024/03/03 17:07:36 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/03/04 19:12:10 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,6 +109,8 @@ typedef struct s_proj
 
 typedef struct s_map
 {
+	int			freeze;
+	int			unkillable;
 	int			map_width;
 	int			map_height;
 	char		**c_map;

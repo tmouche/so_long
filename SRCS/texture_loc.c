@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 14:47:38 by tmouche           #+#    #+#             */
-/*   Updated: 2024/03/04 18:51:04 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/03/04 19:08:14 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,13 +46,13 @@ t_offs	_edge_distance(t_block ***s_map, int x1, int x2)
 	off.u = 0;
 	off.r = 0;
 	off.l = 0;
-	while (x2 - off.l > 0 && off.l < SSIZE_X / (SPR_S / 3))
+	while (x2 - off.l >= -1 && off.l < SSIZE_X / (SPR_S / 3))
 		++off.l;
 	while (s_map[x1][x2 + off.r + 1] != 0 && off.r < SSIZE_X / (SPR_S / 3))
 		++off.r;
 	while (s_map[x1 + off.d + 1] != 0 && off.d < SSIZE_Y / (SPR_S / 3))
 		++off.d;
-	while (x1 - off.u > 0 && off.u < SSIZE_Y / (SPR_S / 3))
+	while (x1 - off.u >= -1 && off.u < SSIZE_Y / (SPR_S / 3))
 		++off.u;
 	return (off);
 }
