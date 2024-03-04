@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 15:23:10 by tmouche           #+#    #+#             */
-/*   Updated: 2024/03/03 17:38:16 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/03/04 18:29:45 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,27 @@
 #include "../HDRS/window.h"
 #include <sys/time.h>
 #include <stdlib.h>
+#include <stdio.h>
+
+/*static void	_printer(t_block ***s_map)
+{
+	int	x1;
+	int	x2;
+	
+	x1 = 0;
+	while (s_map[x1])
+	{
+		x2 = 0;
+		while (s_map[x1][x2])
+		{
+			printf("%c", s_map[x1][x2]->type);
+			++x2;
+		}
+		printf("\n");
+		++x1;
+	}
+	printf("--------------\n");
+}*/
 
 static inline void	_character(t_struct *g, int *multi)
 {
@@ -49,6 +70,7 @@ static inline void	_projectile(t_struct *g, int *multi)
 
 static inline void	_framer(t_struct *g, int *multi)
 {
+	//_printer(g->info->s_map);
 	_texture_to_img(g, g->info, g->info->s_map);
 	mlx_clear_window(g->vars->mlx, g->vars->win);
 	mlx_put_image_to_window(g->vars->mlx, g->vars->win, g->img->img, 0, 0);
