@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 12:44:24 by tmouche           #+#    #+#             */
-/*   Updated: 2024/03/05 15:23:23 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/03/05 15:47:45 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,10 @@ static int	_spr_part(t_block ***s_map, int *cc, char c)
 
 static inline void	_print_spr(t_struct *g, t_block *blk, int *pxl, int off)
 {
-	int	*colors;
-	int	i;
-	int	pxl_y;
-	int	pxl_x;
+	int		*colors;
+	int		i;
+	int		pxl_y;
+	int		pxl_x;
 
 	colors = _sprite_stock(g->info, blk, blk->type);
 	pxl_y = pxl[0];
@@ -67,6 +67,8 @@ static void	_printer(t_struct *g, t_block ***s_map, int *cc, int *pxl_cc)
 		_print_spr(g, g->info->inv->empty, pxl_cc, _spr_part(s_map, cc, '0'));
 		_print_spr(g, s_map[cc[0]][cc[1]], pxl_cc,
 			_spr_part(s_map, cc, s_map[cc[0]][cc[1]]->type));
+		if (s_map[cc[0]][cc[1]]->type == 'P' && g->info->unkillable == 1)
+			_print_spr(g, g->info->inv->shield, pxl_cc, _spr_part(s_map, cc, 'P'));
 	}
 	else
 		_print_spr(g, s_map[cc[0]][cc[1]], pxl_cc,

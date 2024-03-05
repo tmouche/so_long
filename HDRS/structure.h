@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/31 15:53:48 by tmouche           #+#    #+#             */
-/*   Updated: 2024/03/05 13:52:54 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/03/05 15:42:15 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,7 @@ typedef struct s_colors
 	int			*laser_1;
 	int			*laser_2;
 	int			*laser_3;
+	int			*shield;
 }				t_colors;
 
 typedef struct s_vars
@@ -115,6 +116,7 @@ typedef struct s_invent
 	t_block	*exit;
 	t_block	*collect;
 	t_block	*player;
+	t_block	*shield;
 }				t_invent;
 
 typedef struct s_map

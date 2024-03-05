@@ -6,6 +6,4 @@ right : 65363
 ||||||||||||||||
 
 short shoot up down
-death anim
-shoot sprite 
-write win or lose in 0 and steps if win 
+death anim 

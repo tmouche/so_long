@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 16:40:47 by tmouche           #+#    #+#             */
-/*   Updated: 2024/03/05 15:20:59 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/03/05 15:49:02 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,7 @@ static inline void	_init_map_block_bis(t_map *info)
 {
 	static t_block	collect;
 	static t_block	player;
+	static t_block	shield;
 
 	info->inv->collect = &collect;
 	collect.bad = NULL;
@@ -87,6 +88,10 @@ static inline void	_init_map_block_bis(t_map *info)
 	info->inv->player = &player;
 	player.bad = NULL;
 	player.type = 'P';
+	info->inv->shield = &shield;
+	shield.bad = NULL;
+	shield.type = 's';
+	
 }
 
 void	_init_map_block(t_map *info)
