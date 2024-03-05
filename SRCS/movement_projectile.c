@@ -6,13 +6,14 @@
 /*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 11:40:46 by tmouche           #+#    #+#             */
-/*   Updated: 2024/03/04 18:55:36 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/03/05 14:04:26 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../HDRS/structure.h"
 #include "../HDRS/movement.h"
 #include <X11/keysym.h>
+#include <stdio.h>
 
 void	_erase_proj(t_map *info, t_proj *laser, t_block ***s_map)
 {
@@ -23,9 +24,9 @@ void	_erase_proj(t_map *info, t_proj *laser, t_block ***s_map)
 	{
 		while (s_map[laser->x1][laser->x2 + i] == laser->laser)
 		{
-			s_map[laser->x1][laser->x2 + i] = info->empty;
-			s_map[laser->x1 + 1][laser->x2 + i] = info->empty;
-			s_map[laser->x1 + 2][laser->x2 + i] = info->empty;
+			s_map[laser->x1][laser->x2 + i] = info->inv->empty;
+			s_map[laser->x1 + 1][laser->x2 + i] = info->inv->empty;
+			s_map[laser->x1 + 2][laser->x2 + i] = info->inv->empty;
 			++i;
 		}
 	}
@@ -33,9 +34,9 @@ void	_erase_proj(t_map *info, t_proj *laser, t_block ***s_map)
 	{
 		while (s_map[laser->x1][laser->x2 + i] == laser->laser)
 		{
-			s_map[laser->x1][laser->x2 + i] = info->empty;
-			s_map[laser->x1 + 1][laser->x2 + i] = info->empty;
-			s_map[laser->x1 + 2][laser->x2 + i] = info->empty;
+			s_map[laser->x1][laser->x2 + i] = info->inv->empty;
+			s_map[laser->x1 + 1][laser->x2 + i] = info->inv->empty;
+			s_map[laser->x1 + 2][laser->x2 + i] = info->inv->empty;
 			--i;
 		}
 	}
@@ -75,7 +76,7 @@ static int	_laser_check(t_map *info, int (*cc)[2])
 	i = 0;
 	while (i < 3)
 	{
-		if (info->s_map[cc[i][0]][cc[i][1]] != info->empty)
+		if (info->s_map[cc[i][0]][cc[i][1]] != info->inv->empty)
 			if (info->s_map[cc[i][0]][cc[i][1]]->bad == NULL)
 				return (0);
 		++i;

@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 10:34:19 by tmouche           #+#    #+#             */
-/*   Updated: 2024/03/04 20:26:05 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/03/05 13:27:37 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,20 +59,26 @@ static void	_putchar_map(char c, t_struct *g, int x1, int x2)
 	t_block	*block;
 
 	if (c == '0')
-		_create_square(g->info->s_map, g->info->empty, x1, x2);
+		_create_square(g->info->s_map, g->info->inv->empty, x1, x2);
+	else if (c == '1')
+		_create_square(g->info->s_map, g->info->inv->wall_out, x1, x2);
+	else if (c == '2')
+		_create_square(g->info->s_map, g->info->inv->wall_in, x1, x2);
+	else if (c == 'C')
+		_create_square(g->info->s_map, g->info->inv->collect, x1, x2);
+	else if (c == 'E')
+		_create_square(g->info->s_map, g->info->inv->exit, x1, x2);
+	else if (c == 'P')
+		_create_square(g->info->s_map, g->info->inv->player, x1, x2);
 	else
 	{
 		block = malloc(sizeof(t_block));
 		if (!block)
 			_free_all(g, 1);
 		block->type = c;
-		block->bad = NULL;
-		if (c == 'D')
-		{
-			block->bad = _fixer_opps(g->info->bad, x1, x2);
-			if (!block->bad)
-				_free_all(g, 0);
-		}
+		block->bad = _fixer_opps(g->info->bad, x1, x2);
+		if (!block->bad)
+			_free_all(g, 0);
 		_create_square(g->info->s_map, block, x1, x2);
 	}
 }
@@ -128,5 +134,6 @@ void	_fixer_map(t_struct *g)
 	}
 	g->info->bad = &bad;
 	g->info->s_map = s_map;
+	_init_map_block(g->info);
 	_fill_map(g, g->info->c_map);
 }

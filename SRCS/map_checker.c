@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 18:18:55 by tmouche           #+#    #+#             */
-/*   Updated: 2024/03/03 20:45:52 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/03/05 15:21:15 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ static int	_is_possible(char **map, int x1, int x2, int c)
 
 static int	_path_finder(char **map, int x1, int x2, char goal)
 {
-	char actual;
+	char	actual;
 
 	actual = map[x1][x2];
 	if (actual == '0' || actual == 'C')
@@ -50,7 +50,6 @@ static int	_path_finder(char **map, int x1, int x2, char goal)
 		return (-1);
 	else
 		return (1);
-		
 }
 
 static int	_map_finished(char **map, int x1, int x2)
@@ -58,7 +57,7 @@ static int	_map_finished(char **map, int x1, int x2)
 	char	**map_copy;
 	int		res_e;
 	int		res_p;
-	
+
 	map_copy = _copy_map(map);
 	if (!map_copy)
 	{

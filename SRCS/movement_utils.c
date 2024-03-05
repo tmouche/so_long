@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 14:16:29 by tmouche           #+#    #+#             */
-/*   Updated: 2024/03/03 17:36:12 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/03/05 13:32:41 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	_reset_chara(t_map *info, t_block ***s_map, int x1, int x2)
 		offset_x2 = 0;
 		while (offset_x2 < 3)
 		{
-			s_map[x1 + offset_x1][x2 + offset_x2] = info->empty;
+			s_map[x1 + offset_x1][x2 + offset_x2] = info->inv->empty;
 			++offset_x2;
 		}
 		++offset_x1;

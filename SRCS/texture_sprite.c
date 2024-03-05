@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 17:32:04 by tmouche           #+#    #+#             */
-/*   Updated: 2024/03/04 19:01:05 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/03/05 15:24:51 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,13 @@
 static inline int	*_sprite_anim_proj(t_colors *colors, int state)
 {
 	if (state == 1)
-		return (colors->laser_1_r);
+		return (colors->laser_1);
 	if (state == 2)
-		return (colors->laser_2_r);
+		return (colors->laser_2);
 	if (state == 3)
-		return (colors->laser_3_r);
+		return (colors->laser_3);
 	else
-		return (colors->laser_3_r);
+		return (colors->laser_3);
 }
 
 static inline int	*_sprite_anim_opps(t_colors *colors, int state)
@@ -35,21 +35,18 @@ static inline int	*_sprite_anim_opps(t_colors *colors, int state)
 		if (state == 2)
 			return (colors->opps_top);
 	}
-	else
-	{
-		if (state == -1)
-			return (colors->explosion_1);
-		if (state == -2)
-			return (colors->explosion_2);
-		if (state == -3)
-			return (colors->explosion_3);
-		if (state == -4)
-			return (colors->explosion_4);
-		if (state == -5)
-			return (colors->explosion_5);
-		if (state == -6)
-			return (colors->explosion_6);
-	}
+	if (state == -1)
+		return (colors->explosion_1);
+	if (state == -2)
+		return (colors->explosion_2);
+	if (state == -3)
+		return (colors->explosion_3);
+	if (state == -4)
+		return (colors->explosion_4);
+	if (state == -5)
+		return (colors->explosion_5);
+	if (state == -6)
+		return (colors->explosion_6);
 	return (NULL);
 }
 
@@ -67,8 +64,7 @@ static inline int	*_anim_player(t_colors *colors, int vec, int state)
 			return (colors->p_shoot4_l);
 		else if (state <= 10)
 			return (colors->p_shoot5_l);
-		else
-			return (colors->p_l);
+		return (colors->p_l);
 	}
 	if (state <= 2)
 		return (colors->p_shoot1_r);
@@ -80,8 +76,7 @@ static inline int	*_anim_player(t_colors *colors, int vec, int state)
 		return (colors->p_shoot4_r);
 	else if (state <= 10)
 		return (colors->p_shoot5_r);
-	else
-		return (colors->p_r);
+	return (colors->p_r);
 }
 
 static inline int	*_sprite_animation(t_map *info, t_block *block)

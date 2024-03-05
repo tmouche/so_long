@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/31 15:53:48 by tmouche           #+#    #+#             */
-/*   Updated: 2024/03/04 19:12:10 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/03/05 13:52:54 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,9 +78,9 @@ typedef struct s_colors
 	int			*explosion_4;
 	int			*explosion_5;
 	int			*explosion_6;
-	int			*laser_1_r;
-	int			*laser_2_r;
-	int			*laser_3_r;
+	int			*laser_1;
+	int			*laser_2;
+	int			*laser_3;
 }				t_colors;
 
 typedef struct s_vars
@@ -107,6 +107,16 @@ typedef struct s_proj
 	t_block	*laser;
 }				t_proj;
 
+typedef struct s_invent
+{
+	t_block	*empty;
+	t_block	*wall_in;
+	t_block	*wall_out;
+	t_block	*exit;
+	t_block	*collect;
+	t_block	*player;
+}				t_invent;
+
 typedef struct s_map
 {
 	int			freeze;
@@ -123,7 +133,7 @@ typedef struct s_map
 	int			mv_x;
 	int			mv_y;
 	t_block		***s_map;
-	t_block		*empty;
+	t_invent	*inv;
 	t_opps		**bad;
 	t_colors	*colors;
 	t_proj		*proj;
@@ -158,7 +168,5 @@ void	_lst_del_struct(t_opps *lst);
 void	_free_all(t_struct *glob, int stop);
 void	_free_texture_a(t_colors *colors);
 void	_freemap(char **map);
-
-void	_init_t_map(t_map *info, int x1, int x2, int collect);
 
 #endif

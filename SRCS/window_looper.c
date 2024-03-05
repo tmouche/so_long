@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 15:23:10 by tmouche           #+#    #+#             */
-/*   Updated: 2024/03/04 20:26:14 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/03/05 15:16:58 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,12 +67,15 @@ int	_exchanger(t_struct *g)
 	static int		m_chara = 0;
 	static int		m_anim = 0;
 
-	if (g->info->freeze == 1)
-		return (0);
 	gettimeofday(&clock, NULL);
+	if (clock.tv_usec >= U_SEC / SPEED_ANIM * m_anim
+		&& clock.tv_usec <= U_SEC / SPEED_ANIM * (m_anim + 1))
+		_refresh_anim(g->info, *(g->info->bad), &m_anim);
 	if (clock.tv_usec >= U_SEC / FPS * m_fps
 		&& clock.tv_usec <= U_SEC / FPS * (m_fps + 1))
 		_framer(g, &m_fps);
+	if (g->info->freeze == 1)
+		return (0);
 	if (clock.tv_usec >= U_SEC / SPEED_LASER * m_laser
 		&& clock.tv_usec <= U_SEC / SPEED_LASER * (m_laser + 1)
 		&& g->info->proj->shoot > 0)
@@ -80,8 +83,5 @@ int	_exchanger(t_struct *g)
 	if (clock.tv_usec >= U_SEC / SPEED_CHARA * m_chara
 		&& clock.tv_usec <= U_SEC / SPEED_CHARA * (m_chara + 1))
 		_character(g, &m_chara);
-	if (clock.tv_usec >= U_SEC / SPEED_ANIM * m_anim
-		&& clock.tv_usec <= U_SEC / SPEED_ANIM * (m_anim + 1))
-		_refresh_anim(g->info, *(g->info->bad), &m_anim);
 	return (0);
 }

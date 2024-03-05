@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/20 12:54:49 by tmouche           #+#    #+#             */
-/*   Updated: 2024/03/04 18:59:04 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/03/05 15:12:10 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,7 @@ void	_check_v(int x1, int x2, int o_x1, int (*check)[2]);
 void	_check_h(int x1, int x2, int o_x2, int (*check)[2]);
 void	_check_d(int x1, int x2, int *mv, int (*check)[2]);
 
-void	_door(t_struct *g);
-void	_kill_player(t_struct *g);
+void	_this_is_the_end(t_struct *g, char c);
 void	_collectible(t_map *info, int x1, int x2);
 
 void	_move_opps(t_map *info, t_block ***s_map, t_opps *bad);

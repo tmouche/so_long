@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 18:13:03 by tmouche           #+#    #+#             */
-/*   Updated: 2024/03/04 19:32:58 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/03/05 15:21:32 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	_key_release(int keycode, t_struct *g)
 		g->info->mv_x = 0;
 	if (keycode == 's' && g->info->unkillable != 1)
 		g->info->mv_y = 0;
-	if (keycode == 'd'&& g->info->unkillable != 1)
+	if (keycode == 'd' && g->info->unkillable != 1)
 		g->info->mv_x = 0;
 	if ((keycode == 65361 || keycode == 65363) && g->info->proj->limit == -1
 		&& g->info->unkillable != 1)

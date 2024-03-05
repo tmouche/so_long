@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 16:40:47 by tmouche           #+#    #+#             */
-/*   Updated: 2024/03/04 19:13:29 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/03/05 15:20:59 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ char	*_strjoin_map(char *s1, char *s2)
 
 void	_init_t_map(t_map *info, int x1, int x2, int collect)
 {
-	static t_block	empty;
 	static t_proj	proj;
 	static t_block	laser;
 
@@ -70,12 +69,46 @@ void	_init_t_map(t_map *info, int x1, int x2, int collect)
 	info->mv_x = 0;
 	info->mv_y = 0;
 	info->proj = &proj;
-	info->empty = &empty;
-	empty.bad = NULL;
-	empty.type = '0';
 	proj.limit = -1;
 	proj.o_x2 = 0;
 	proj.laser = &laser;
 	laser.bad = NULL;
 	laser.type = 'x';
+}
+
+static inline void	_init_map_block_bis(t_map *info)
+{
+	static t_block	collect;
+	static t_block	player;
+
+	info->inv->collect = &collect;
+	collect.bad = NULL;
+	collect.type = 'C';
+	info->inv->player = &player;
+	player.bad = NULL;
+	player.type = 'P';
+}
+
+void	_init_map_block(t_map *info)
+{
+	static t_invent	inventory;
+	static t_block	empty;
+	static t_block	wall_out;
+	static t_block	wall_in;
+	static t_block	exit;
+
+	info->inv = &inventory;
+	inventory.empty = &empty;
+	empty.bad = NULL;
+	empty.type = '0';
+	inventory.wall_out = &wall_out;
+	wall_out.bad = NULL;
+	wall_out.type = '1';
+	inventory.wall_in = &wall_in;
+	wall_in.bad = NULL;
+	wall_in.type = '2';
+	inventory.exit = &exit;
+	exit.bad = NULL;
+	exit.type = 'E';
+	_init_map_block_bis(info);
 }

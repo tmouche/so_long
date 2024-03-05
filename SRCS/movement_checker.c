@@ -6,13 +6,14 @@
 /*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 15:54:06 by tmouche           #+#    #+#             */
-/*   Updated: 2024/03/04 19:42:30 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/03/05 15:22:06 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../HDRS/structure.h"
 #include "../HDRS/movement.h"
 #include <unistd.h>
+#include <stdio.h>
 
 static int	_opps_check(t_struct *g, t_map *info, int (*cc)[2])
 {
@@ -34,7 +35,10 @@ static int	_opps_check(t_struct *g, t_map *info, int (*cc)[2])
 	{
 		c = info->s_map[cc[i][0]][cc[i][1]]->type;
 		if (c == 'P')
-			_kill_player(g);
+		{
+			_this_is_the_end(g, 'D');
+			return (0);
+		}
 		++i;
 	}
 	return (1);
@@ -56,13 +60,11 @@ static int	_player_check(t_struct *g, t_map *info, int (*cc)[2], int limit)
 	while (++i < limit)
 	{
 		c = info->s_map[cc[i][0]][cc[i][1]]->type;
-		if (c == 'D')
-			_kill_player(g);
-		else if (c == 'C')
+		if (c == 'C')
 			_collectible(info, cc[i][0], cc[i][1]);
-		else if (c == 'E')
+		else if (c == 'D' || c == 'E')
 		{
-			_door(g);
+			_this_is_the_end(g, c);
 			return (0);
 		}
 	}

@@ -6,14 +6,14 @@
 /*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/10 12:44:24 by tmouche           #+#    #+#             */
-/*   Updated: 2024/03/04 18:50:46 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/03/05 15:23:23 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../HDRS/structure.h"
 #include "../HDRS/texture.h"
 
-static int		_spr_part(t_block ***s_map, int *cc, char c)
+static int	_spr_part(t_block ***s_map, int *cc, char c)
 {
 	int	off_x1;
 	int	off_x2;
@@ -24,7 +24,7 @@ static int		_spr_part(t_block ***s_map, int *cc, char c)
 		while (s_map[cc[0] - off_x1][cc[1]]->type == c)
 			++off_x1;
 		off_x2 = 0;
-		while (s_map[cc[0]][cc[1] - off_x2]->type == c)	
+		while (s_map[cc[0]][cc[1] - off_x2]->type == c)
 			++off_x2;
 		return (((off_x2 - 1) % 3 + SPR_S * ((off_x1 - 1) % 3)) * (SPR_S / 3));
 	}
@@ -35,7 +35,7 @@ static int		_spr_part(t_block ***s_map, int *cc, char c)
 static inline void	_print_spr(t_struct *g, t_block *blk, int *pxl, int off)
 {
 	int	*colors;
-	int i;
+	int	i;
 	int	pxl_y;
 	int	pxl_x;
 
@@ -59,18 +59,18 @@ static inline void	_print_spr(t_struct *g, t_block *blk, int *pxl, int off)
 	}
 }
 
-static void _printer(t_struct *g, t_block ***s_map, int *cc, int *pxl_cc)
+static void	_printer(t_struct *g, t_block ***s_map, int *cc, int *pxl_cc)
 {
 	if (s_map[cc[0]][cc[1]]->type == 'D' || s_map[cc[0]][cc[1]]->type == 'P'
 		|| s_map[cc[0]][cc[1]]->type == 'x')
 	{
-		_print_spr(g, g->info->empty, pxl_cc, _spr_part(s_map, cc, '0'));
-		_print_spr(g, s_map[cc[0]][cc[1]], pxl_cc, 
-					_spr_part(s_map, cc, s_map[cc[0]][cc[1]]->type));
+		_print_spr(g, g->info->inv->empty, pxl_cc, _spr_part(s_map, cc, '0'));
+		_print_spr(g, s_map[cc[0]][cc[1]], pxl_cc,
+			_spr_part(s_map, cc, s_map[cc[0]][cc[1]]->type));
 	}
 	else
-		_print_spr(g, s_map[cc[0]][cc[1]], pxl_cc, 
-					_spr_part(s_map, cc, s_map[cc[0]][cc[1]]->type));
+		_print_spr(g, s_map[cc[0]][cc[1]], pxl_cc,
+			_spr_part(s_map, cc, s_map[cc[0]][cc[1]]->type));
 	pxl_cc[1] += SPR_S / 3;
 	++cc[1];
 }

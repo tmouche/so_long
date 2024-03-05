@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 11:54:22 by tmouche           #+#    #+#             */
-/*   Updated: 2024/03/03 20:34:15 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/03/05 15:20:08 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,31 +27,24 @@ void	_freemap(char **map)
 	free(map);
 }
 
-static void	_free_s_map(t_map *info, t_block ***s_map, int stop)
+static void	_free_s_map(t_map *info, t_block ***s_map)
 {
-	int	temp;
-	int	x1;
-	int	x2;
+	t_opps	*bad;
+	t_opps	*temp;
+	int		x1;
 
-	x1 = 0;
-	while (s_map[x1])
+	bad = *info->bad;
+	while (bad)
 	{
-		x2 = 0;
-		if (stop > 0)
-		{
-			while (s_map[x1][x2])
-			{
-				if (s_map[x1][x2]->type == 'D' && s_map[x1][x2]->bad)
-					free (s_map[x1][x2]->bad);
-				x2 += 3;
-			}
-		}
-		temp = -1;
-		while (++temp < 3)
-			free (s_map[x1 + temp]);
-		x1 += 3;
+		temp = bad->next;
+		if (bad->x1 > 0)
+			free (s_map[bad->x1][bad->x2]);
+		free (bad);
+		bad = temp;
 	}
-	free (info->empty);
+	x1 = -1;
+	while (s_map[++x1])
+		free (s_map[x1]);
 	free (s_map);
 }
 
@@ -69,7 +62,7 @@ void	_free_all(t_struct *g, int stop)
 {
 	_freemap(g->info->c_map);
 	if (stop >= 0)
-		_free_s_map(g->info, g->info->s_map, stop);
+		_free_s_map(g->info, g->info->s_map);
 	if (stop > 1)
 		_free_mlx(g->vars, g->img, stop);
 	if (stop > 4)

@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 14:43:12 by tmouche           #+#    #+#             */
-/*   Updated: 2024/03/03 17:34:48 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/03/05 13:53:59 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,9 +96,9 @@ static void	_load_anim_textures(t_struct *g, t_colors *colors)
 	colors->explosion_4 = _txt_sprite(g, ft_strjoin(path, "explosion_4.txt"));
 	colors->explosion_5 = _txt_sprite(g, ft_strjoin(path, "explosion_5.txt"));
 	colors->explosion_6 = _txt_sprite(g, ft_strjoin(path, "explosion_6.txt"));
-	colors->laser_1_r = _txt_sprite(g, ft_strjoin(path, "laser_1_r.txt"));
-	colors->laser_2_r = _txt_sprite(g, ft_strjoin(path, "laser_2_r.txt"));
-	colors->laser_3_r = _txt_sprite(g, ft_strjoin(path, "laser_3_r.txt"));
+	colors->laser_1 = _txt_sprite(g, ft_strjoin(path, "laser_1.txt"));
+	colors->laser_2 = _txt_sprite(g, ft_strjoin(path, "laser_2.txt"));
+	colors->laser_3 = _txt_sprite(g, ft_strjoin(path, "laser_3.txt"));
 }
 
 void	_load_textures(t_struct *g)

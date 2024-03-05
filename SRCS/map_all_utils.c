@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 05:08:26 by tmouche           #+#    #+#             */
-/*   Updated: 2024/03/03 20:45:17 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/03/05 15:19:52 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ char	**_copy_map(char **src)
 	char	**dst;
 	int		x1;
 	int		x2;
-	
+
 	x1 = 0;
 	while (src[x1])
 		++x1;
