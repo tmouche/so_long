@@ -5,6 +5,4 @@ right : 65363
 
 ||||||||||||||||
 
-short shoot up down
-death anim
 segfault if no \n at the end of map

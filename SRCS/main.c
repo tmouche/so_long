@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 23:31:59 by tmouche           #+#    #+#             */
-/*   Updated: 2024/03/03 17:46:19 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/03/05 18:55:10 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ int	main(int ac, char **av)
 {
 	t_struct	glob;
 	t_map		info;
-	int			fd;
 
 	if (ac != 2)
 	{
