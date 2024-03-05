@@ -6,12 +6,13 @@
 /*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 16:47:13 by tmouche           #+#    #+#             */
-/*   Updated: 2024/03/05 12:15:45 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/03/05 18:30:54 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../HDRS/structure.h"
 #include "../HDRS/movement.h"
+#include <stdlib.h>
 
 static inline void	_anim_ennemies(t_map *info, t_opps *bad)
 {
@@ -30,6 +31,7 @@ static inline void	_anim_ennemies(t_map *info, t_opps *bad)
 				--bad->state;
 			else if (bad->x1 != 0)
 			{
+				free (info->s_map[bad->x1][bad->x2]);
 				_reset_chara(info, info->s_map, bad->x1, bad->x2);
 				bad->x1 = 0;
 			}

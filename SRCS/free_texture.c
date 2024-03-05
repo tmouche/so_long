@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/03 17:01:00 by tmouche           #+#    #+#             */
-/*   Updated: 2024/03/05 13:52:32 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/03/05 16:15:35 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,8 @@ static void	_free_texture_c(t_colors *colors)
 		free (colors->laser_2);
 	if (colors->laser_3)
 		free (colors->laser_3);
+	if (colors->shield)
+		free (colors->shield);
 }
 
 static void	_free_texture_b(t_colors *colors)

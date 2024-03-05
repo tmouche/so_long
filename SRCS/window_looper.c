@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 15:23:10 by tmouche           #+#    #+#             */
-/*   Updated: 2024/03/05 15:16:58 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/03/05 18:23:07 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 
 static inline void	_character(t_struct *g, int *multi)
 {
-	if (g->info->mv_x != 0 || g->info->mv_y != 0)
+	if ((g->info->mv_x != 0 || g->info->mv_y != 0) && g->info->unkillable != 1)
 		_player(g, g->info);
 	_ennemies(g, g->info, *(g->info->bad));
 	++multi[0];
@@ -32,7 +32,7 @@ static inline void	_projectile(t_struct *g, int *multi)
 {
 	static int	looper = 0;
 
-	if (looper == 15)
+	if (looper == 5)
 	{
 		_erase_proj(g->info, g->info->proj, g->info->s_map);
 		g->info->proj->shoot = 0;
