@@ -6,7 +6,7 @@
 #    By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/18 10:53:51 by tmouche           #+#    #+#              #
-#    Updated: 2024/03/05 16:29:18 by tmouche          ###   ########.fr        #
+#    Updated: 2024/03/06 11:31:35 by tmouche          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -35,9 +35,9 @@ RM := rm -rf
 NAME := so_long	
 OBJS := $(SRCS:%.c=$(OBJS_D)%.o)
 
-all: libft ft_printf minilibx-linux $(NAME)
+all: libft ft_printf minilibx-linux $(NAME) 
 
-$(NAME): $(OBJS_D) $(OBJS) | libft ft_printf minilibx-linux
+$(NAME): $(OBJS_D) $(OBJS) | libft ft_printf minilibx-linux Makefile
 	$(CC) $(CFLAGS) $(OBJS) -I$(INC_D)libft -L$(INC_D)libft -lft -I$(INC_D)minilibx-linux -L$(INC_D)minilibx-linux -lmlx -L$(INC_D)ft_printf -lftprintf -L/usr/lib -lXext -lX11 -lm -lz -o $(NAME)
 
 
