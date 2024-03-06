@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 13:56:51 by tmouche           #+#    #+#             */
-/*   Updated: 2024/03/03 16:56:01 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/03/06 14:29:38 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,11 @@
 int			_pix_x(size_t x);
 int			_pix_y(size_t y);
 int			_disp_info(t_struct *g, int collec, int step);
+t_struct	*_give_g(t_struct *g_base);
 
 int			_key_release(int keycode, t_struct *g);
 int			_key_press(int keycode, t_struct *g);
+int			_button_press(int keycode, t_struct *g);
 
 void		_refresh_anim(t_map *info, t_opps *bad, int *multi);
 

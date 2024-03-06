@@ -6,14 +6,13 @@
 /*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 11:40:46 by tmouche           #+#    #+#             */
-/*   Updated: 2024/03/05 14:04:26 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/03/06 15:03:51 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../HDRS/structure.h"
 #include "../HDRS/movement.h"
 #include <X11/keysym.h>
-#include <stdio.h>
 
 void	_erase_proj(t_map *info, t_proj *laser, t_block ***s_map)
 {

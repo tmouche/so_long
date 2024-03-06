@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 13:54:24 by tmouche           #+#    #+#             */
-/*   Updated: 2024/03/01 16:34:58 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/03/06 14:37:24 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,19 @@
 #include "../HDRS/movement.h"
 #include "../HDRS/texture.h"
 #include "../HDRS/window.h"
+
+t_struct	*_give_g(t_struct *g_base)
+{
+	static t_struct	*g;
+
+	if (g_base)
+	{
+		g = g_base;
+		return (NULL);
+	}
+	else
+		return (g);
+}
 
 static void	_set_vars_img(t_struct *g, int x, int y)
 {
@@ -38,12 +51,14 @@ static void	_set_vars_img(t_struct *g, int x, int y)
 
 void	_window(t_struct *g)
 {
+	_give_g(g);
 	_set_vars_img(g, _pix_x(g->info->map_width), _pix_y(g->info->map_height));
 	_load_textures(g);
 	_texture_to_img(g, g->info, g->info->s_map);
 	mlx_put_image_to_window(g->vars->mlx, g->vars->win, g->img->img, 0, 0);
 	mlx_hook(g->vars->win, 3, 1L << 1, _key_release, g);
 	mlx_hook(g->vars->win, 2, 1L << 0, _key_press, g);
+	mlx_hook(g->vars->win, 17, 1L << 2, _button_press, g);
 	mlx_loop_hook(g->vars->mlx, _exchanger, g);
 	mlx_loop(g->vars->mlx);
 }

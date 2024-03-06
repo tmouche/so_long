@@ -6,14 +6,13 @@
 /*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 15:54:06 by tmouche           #+#    #+#             */
-/*   Updated: 2024/03/05 15:22:06 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/03/06 15:03:45 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../HDRS/structure.h"
 #include "../HDRS/movement.h"
 #include <unistd.h>
-#include <stdio.h>
 
 static int	_opps_check(t_struct *g, t_map *info, int (*cc)[2])
 {

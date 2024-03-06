@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 18:13:03 by tmouche           #+#    #+#             */
-/*   Updated: 2024/03/05 18:22:59 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/03/06 15:04:07 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,14 @@
 #include "../HDRS/movement.h"
 #include "../HDRS/window.h"
 #include "../HDRS/texture.h"
-#include <stdio.h>
+
+int	_button_press(int keycode, t_struct *g)
+{
+	(void)keycode;
+	g = _give_g(NULL);
+	_free_all(g, 5);
+	return (0);
+}
 
 int	_key_release(int keycode, t_struct *g)
 {
