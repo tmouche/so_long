@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 05:08:26 by tmouche           #+#    #+#             */
-/*   Updated: 2024/03/06 16:43:22 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/03/06 16:48:19 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ void	_check_char(char **map, char c)
 		ft_printf("Error : Forbidden character\n");
 		exit (EXIT_FAILURE);
 	}
-		
 }
 
 int	_random(int seed, int proba)
