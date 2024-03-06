@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/22 14:47:38 by tmouche           #+#    #+#             */
-/*   Updated: 2024/03/04 19:08:14 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/03/06 12:57:07 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static void	_define_off_y(t_offs off, int *offset_cam, t_map *info)
 
 t_offs	_edge_distance(t_block ***s_map, int x1, int x2)
 {
-	t_offs	off;
+	static t_offs	off;
 
 	off.d = 0;
 	off.u = 0;
@@ -61,6 +61,10 @@ void	_starter(t_offs off, int *offset_cam, t_map *info)
 {
 	if ((off.u + off.d + 1) > SSIZE_Y / (SPR_S / 3))
 		_define_off_y(off, offset_cam, info);
+	else
+		offset_cam[0] = -info->p_x1;
 	if ((off.r + off.l + 1) > SSIZE_X / (SPR_S / 3))
 		_define_off_x(off, offset_cam, info);
+	else
+		offset_cam[1] = -info->p_x2;
 }
