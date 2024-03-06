@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 13:47:22 by tmouche           #+#    #+#             */
-/*   Updated: 2024/03/05 15:21:45 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/03/06 13:34:38 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,11 @@ void	_collectible(t_map *info, int x1, int x2)
 
 void	_this_is_the_end(t_struct *g, char c)
 {
+	static int	stopper = 0;
+
+	if (stopper > 0)
+		return ;
+	++stopper;
 	if (c == 'E')
 	{
 		ft_printf("you reached the door with all collectibles gg...\n");
