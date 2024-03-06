@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 16:12:27 by tmouche           #+#    #+#             */
-/*   Updated: 2024/03/05 12:47:52 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/03/06 11:24:37 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,6 @@ void	_fixer_map(t_struct *g);
 
 int		_map_checker(t_map *info, char **map);
 
-char	*_strjoin_map(char *s1, char *s2);
-int		_strlen_cust(char *str, char sep);
-
-char	**_read_map(int fd);
+char	**_read_map(char *path);
 
 #endif
