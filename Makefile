@@ -6,14 +6,14 @@
 #    By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/18 10:53:51 by tmouche           #+#    #+#              #
-#    Updated: 2024/03/06 14:57:23 by tmouche          ###   ########.fr        #
+#    Updated: 2024/03/06 20:07:56 by tmouche          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 HDRS	:= map.h structure.h texture.h window.h movement.h
 
 SRCS	:=	main.c \
-			map_creator.c map_creator_utils.c map_checker.c map_fixer.c map_all_utils.c \
+			map_creator.c map_creator_utils.c map_checker.c map_path.c map_fixer.c map_all_utils.c \
 			chained_list_utils1.c chained_list_utils2.c \
 			window.c window_utils.c window_hooker.c window_looper.c \
 			movement_chara.c movement_projectile.c movement_knife.c movement_checker.c movement_checker_utils.c  movement_utils.c movement_event.c \

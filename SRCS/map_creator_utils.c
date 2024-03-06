@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/07 16:40:47 by tmouche           #+#    #+#             */
-/*   Updated: 2024/03/06 11:25:47 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/03/06 20:06:33 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "../HDRS/structure.h"
 #include <unistd.h>
 
-void	_init_t_map(t_map *info, int x1, int x2, int collect)
+void	_init_t_map(t_map *info, int x1, int x2)
 {
 	static t_proj	proj;
 	static t_block	laser;
@@ -23,7 +23,6 @@ void	_init_t_map(t_map *info, int x1, int x2, int collect)
 	info->unkillable = 1;
 	info->map_width = x2;
 	info->map_height = x1;
-	info->collect = collect;
 	info->step = 0;
 	info->vec = 1;
 	info->player_state = 0;
