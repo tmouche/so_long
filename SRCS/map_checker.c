@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/08 18:18:55 by tmouche           #+#    #+#             */
-/*   Updated: 2024/03/05 15:21:15 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/03/06 16:42:15 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,6 +125,7 @@ int	_map_checker(t_map *info, char **map)
 					return (_write_err(1), -1);
 			if (_map_resolvable(info, x1, x2, map) == -1)
 				return (_write_err(2), -1);
+			_check_char(map, map[x1][x2]);
 		}
 		if (x2 != (int)ft_strlen(map[0], 0))
 			return (_write_err(3), -1);

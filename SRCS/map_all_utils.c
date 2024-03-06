@@ -6,15 +6,27 @@
 /*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/09 05:08:26 by tmouche           #+#    #+#             */
-/*   Updated: 2024/03/05 15:19:52 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/03/06 16:43:22 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/ft_printf/ft_printf.h"
 #include "../include/libft/libft.h"
 #include "../HDRS/structure.h"
+#include "../HDRS/map.h"
 #include <stdlib.h>
 #include <time.h>
+
+void	_check_char(char **map, char c)
+{
+	if (c != '1' && c != '0' && c != 'E' && c != 'P' && c != 'C')
+	{
+		_freemap(map);
+		ft_printf("Error : Forbidden character\n");
+		exit (EXIT_FAILURE);
+	}
+		
+}
 
 int	_random(int seed, int proba)
 {

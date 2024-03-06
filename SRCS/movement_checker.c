@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 15:54:06 by tmouche           #+#    #+#             */
-/*   Updated: 2024/03/06 15:03:45 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/03/06 15:22:11 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,5 +115,5 @@ void	_player(t_struct *g, t_map *info)
 		if (_player_check(g, info, (int (*)[2])check_d, 1) == 0)
 			return ;
 	}
-	_move_player(info, info->mv_y, info->mv_x);
+	_move_player(g, info, info->mv_y, info->mv_x);
 }

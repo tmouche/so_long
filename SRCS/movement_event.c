@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 13:47:22 by tmouche           #+#    #+#             */
-/*   Updated: 2024/03/06 13:34:38 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/03/06 15:13:19 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	_this_is_the_end(t_struct *g, char c)
 	}
 	else
 	{
-		ft_printf("GAME OVER ! An opps killed you loser :p\n");
+		ft_printf("GAME OVER ! An opps killed you :p\n");
 		g->info->freeze = 1;
 	}
 	ft_printf("ESC to quit\n");
