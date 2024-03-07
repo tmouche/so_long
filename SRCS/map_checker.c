@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 19:35:29 by tmouche           #+#    #+#             */
-/*   Updated: 2024/03/06 20:22:25 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/03/07 14:17:09 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,17 @@
 #include "../HDRS/map.h"
 #include <stddef.h>
 #include <unistd.h>
+
+static int	_check_len(int x1, int x2)
+{
+	static int	len = 0;
+
+	if (x1 == 0)
+		len = x2;
+	else if (x2 != len)
+		return (-1);
+	return (0);
+}
 
 static void	_check_e_p(char **map, int *counter)
 {
@@ -44,8 +55,6 @@ int	_map_checker(t_map *info, char **map)
 	int	x1;
 	int	x2;
 
-	if (!map)
-		return (_write_err(404), -1);
 	x1 = -1;
 	info->collect = 0;
 	while (map[++x1])
@@ -59,6 +68,8 @@ int	_map_checker(t_map *info, char **map)
 			_check_char(map, map[x1][x2]);
 			counter = _map_resolvable(info, map[x1][x2]);
 		}
+		if (_check_len(x1, x2) == -1)
+			return (_write_err(3), -1);
 	}
 	_check_e_p(map, counter);
 	_init_t_map(info, x1, x2);

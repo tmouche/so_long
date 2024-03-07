@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 19:45:48 by tmouche           #+#    #+#             */
-/*   Updated: 2024/03/06 20:27:44 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/03/07 14:17:43 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,41 +15,49 @@
 #include <stddef.h>
 #include <unistd.h>
 
-static int	_path_finder(char **map, int x1, int x2, char goal);
-
-static int	_is_possible(char **map, int x1, int x2, int c)
+static inline void	_set_off(int (*off)[2], int x1, int x2)
 {
-	int	res[4];
-	int	i;
+	off[0][0] = x1;
+	off[0][1] = x2 + 1;
+	off[1][0] = x1;
+	off[1][1] = x2 - 1;
+	off[2][0] = x1 + 1;
+	off[2][1] = x2;
+	off[3][0] = x1 - 1;
+	off[3][1] = x2;
+}
 
-	res[0] = _path_finder(map, x1, x2 + 1, c);
-	res[1] = _path_finder(map, x1, x2 - 1, c);
-	res[2] = _path_finder(map, x1 + 1, x2, c);
-	res[3] = _path_finder(map, x1 - 1, x2, c);
-	i = 0;
-	while (i < 4)
+static inline int	_fill_block(char **map, int x1, int x2, char goal)
+{
+	if (map[x1][x2] == '0' || map[x1][x2] == 'C')
 	{
-		if (res[i] == -1)
-			return (-1);
-		++i;
+		map[x1][x2] = '2';
+		return (2);
 	}
-	return (1);
+	else if (map[x1][x2] == goal)
+		return (1);
+	return (0);
 }
 
 static int	_path_finder(char **map, int x1, int x2, char goal)
 {
-	char	actual;
+	int	off[4][2];
+	int	res;
+	int	i;
 
-	actual = map[x1][x2];
-	if (actual == '0' || actual == 'C')
+	i = 0;
+	_set_off(off, x1, x2);
+	while (i < 4)
 	{
-		map[x1][x2] = '2';
-		return (_is_possible(map, x1, x2, goal));
+		res = _fill_block(map, off[i][0], off[i][1], goal);
+		if (res == 1)
+			return (1);
+		else if (res == 2)
+			if (_path_finder(map, off[i][0], off[i][1], goal) == 1)
+				return (1);
+		++i;
 	}
-	if (actual == '1' || actual == '2' || (actual == 'E' && goal != 'E'))
-		return (-1);
-	else
-		return (1);
+	return (0);
 }
 
 static int	_map_finished(char **map, int x1, int x2)
@@ -66,6 +74,8 @@ static int	_map_finished(char **map, int x1, int x2)
 	}
 	res_e = _path_finder(map_copy, x1, x2, 'E');
 	_freemap(map_copy);
+	if (res_e != 1)
+		return (-1);
 	map_copy = _copy_map(map);
 	if (!map_copy)
 	{
@@ -74,9 +84,9 @@ static int	_map_finished(char **map, int x1, int x2)
 	}
 	res_p = _path_finder(map_copy, x1, x2, 'P');
 	_freemap(map_copy);
-	if (res_e == 1 && res_p == 1)
-		return (0);
-	return (-1);
+	if (res_p != 1)
+		return (-1);
+	return (0);
 }
 
 void	_map_check_path(t_map *info, char **map)
