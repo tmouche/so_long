@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/05 18:41:04 by tmouche           #+#    #+#             */
-/*   Updated: 2024/03/06 11:25:37 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/03/11 18:16:39 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "../HDRS/map.h"
 #include <unistd.h>
 #include <fcntl.h>
+#include <limits.h>
 
 static int	_lenght_map(char *path)
 {
@@ -26,13 +27,15 @@ static int	_lenght_map(char *path)
 	if (fd == -1)
 		return (0);
 	temp = 1;
-	size = -1;
+	size = 0;
 	while (temp > 0)
 	{
 		temp = read(fd, c, 1);
 		if (temp < 0)
 			return (0);
 		++size;
+		if (size == INT_MAX)
+			return (0);
 	}
 	close (fd);
 	return (size);
@@ -46,7 +49,7 @@ char	**_read_map(char *path)
 	int		fd;
 
 	size = _lenght_map(path);
-	if (size == 0)
+	if (size < 2)
 		return (NULL);
 	buff = malloc(size + 1);
 	if (!buff)

@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 19:35:29 by tmouche           #+#    #+#             */
-/*   Updated: 2024/03/07 14:17:09 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/03/11 19:07:50 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ static int	_check_len(int x1, int x2)
 
 static void	_check_e_p(char **map, int *counter)
 {
+	if (!counter)
+		return ;
 	if (counter[0] != 1 || counter[1] != 1)
 	{
 		_write_err(2);
@@ -56,6 +58,7 @@ int	_map_checker(t_map *info, char **map)
 	int	x2;
 
 	x1 = -1;
+	counter = NULL;
 	info->collect = 0;
 	while (map[++x1])
 	{
