@@ -6,7 +6,7 @@
 /*   By: tmouche <tmouche@student.42lyon.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 19:35:29 by tmouche           #+#    #+#             */
-/*   Updated: 2024/03/11 19:07:50 by tmouche          ###   ########.fr       */
+/*   Updated: 2024/03/12 15:08:09 by tmouche          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,11 @@ static int	_check_len(int x1, int x2)
 	return (0);
 }
 
-static void	_check_e_p(char **map, int *counter)
+static void	_check_e_p(t_map *info, char **map, int *counter)
 {
 	if (!counter)
 		return ;
-	if (counter[0] != 1 || counter[1] != 1)
+	if (counter[0] != 1 || counter[1] != 1 || info->collect == 0)
 	{
 		_write_err(2);
 		_freemap(map);
@@ -74,7 +74,7 @@ int	_map_checker(t_map *info, char **map)
 		if (_check_len(x1, x2) == -1)
 			return (_write_err(3), -1);
 	}
-	_check_e_p(map, counter);
+	_check_e_p(info, map, counter);
 	_init_t_map(info, x1, x2);
 	_map_check_path(info, map);
 	return (0);
